@@ -1,0 +1,6 @@
+framework module Pods_________________________ {
+  umbrella header "Pods-Приложение для кондитера-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,51 @@
+<deliveryMethods>
+    <item itemId="1"  name="Test test test" description="Лавка кулинара" price="100" isHasDeliveryTimes="true">
+        <deliveryTime itemId="1" name="24.02.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="1" name="01:10"/>
+            <deliveryTimeCertain itemId="1" name="02:10"/>
+            <deliveryTimeCertain itemId="1" name="03:10"/>
+            <deliveryTimeCertain itemId="1" name="04:10"/>
+        </deliveryTime>
+        <deliveryTime itemId="1" name="26.03.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="1" name="01:10"/>
+            <deliveryTimeCertain itemId="1" name="02:10"/>
+            <deliveryTimeCertain itemId="1" name="03:10"/>
+            <deliveryTimeCertain itemId="1" name="04:10"/>
+        </deliveryTime>
+    </item>
+    <item itemId="2"  name="Test test 2" description="Лавка кулинара qweqweqweqw" isHasDeliveryTimes="true" price="200" >
+        <deliveryTime itemId="2" name="24.05.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="3" name="01:10"/>
+            <deliveryTimeCertain itemId="3" name="02:10"/>
+            <deliveryTimeCertain itemId="3" name="03:10"/>
+            <deliveryTimeCertain itemId="3" name="04:10"/>
+        </deliveryTime>
+        <deliveryTime itemId="2" name="26.05.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="3" name="01:10"/>
+            <deliveryTimeCertain itemId="3" name="02:10"/>
+            <deliveryTimeCertain itemId="3" name="03:10"/>
+            <deliveryTimeCertain itemId="3" name="04:10"/>
+        </deliveryTime>
+        
+    </item>
+    
+    <item itemId="3"  name="Test test 2" description="Лавка кулинара qweqweqweqw" isHasDeliveryTimes="true" price="200" isHasDeliveryTimesCertain="true">
+        <deliveryTime itemId="3" name="24.12.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="3" name="01:10"/>
+            <deliveryTimeCertain itemId="3" name="02:10"/>
+            <deliveryTimeCertain itemId="3" name="03:10"/>
+            <deliveryTimeCertain itemId="3" name="04:10"/>
+        </deliveryTime>
+        <deliveryTime itemId="3" name="26.06.2019" isHasDeliveryTimesCertain="true">
+            <deliveryTimeCertain itemId="3" name="01:10"/>
+            <deliveryTimeCertain itemId="3" name="02:10"/>
+            <deliveryTimeCertain itemId="3" name="03:10"/>
+            <deliveryTimeCertain itemId="3" name="04:10"/>
+        </deliveryTime>
+    </item>
+    <item itemId="3"  name="Test test 2" description="Лавка кулинара qweqweqweqw" isHasDeliveryTimes="false" price="200" isHasDeliveryTimesCertain="false">
+        <deliveryTime itemId="2" name="26.05.2019" isHasDeliveryTimesCertain="false">
+        </deliveryTime>
+    </item>
+    
+</deliveryMethods>
