@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Product.h"
 #import "../Pods/AFNetworking/AFNetworking/AFNetworking.h"
-#import "CoreLocation/CoreLocation.h"
-#import "MapKit/MapKit.h"
+#import "../VMLocationManager.h"
 
 @interface ApplicationData : NSObject
 
@@ -25,7 +24,6 @@
 +(Product*) searchCart: (Product*) value;
 +(void) login:(NSString*) login withPassword: (NSString*) password  onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString *message) ) failure;
 +(void) registr:(NSString*) login withPassword: (NSString*) password  onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString *message) ) failure;
-+(void) getCatalogSections;
 +(void) getInitialCatalogSectionsOnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
 +(void) getSubCatalogsWithID:(NSNumber*) parentID OnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
 +(void) getCatalogItemsWithID:(NSNumber*) categoryID withPageNum:(NSNumber*) pageNum OnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
@@ -44,6 +42,6 @@
 +(NSMutableArray*) getProductsFromDict:(NSDictionary*) data;
 +(void) registerForGeolocation;
 +(NSString*) getGelocationStatus;
-+(void)isAuthedUser;
++(BOOL)isAuthedUser;
 
 @end

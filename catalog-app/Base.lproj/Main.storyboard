@@ -720,17 +720,17 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="EP4-nx-MKE" kind="push" identifier="topProducts" id="bUW-mN-mFs"/>
+                                                            <segue destination="EP4-nx-MKE" kind="push" identifier="lastProducts" id="bUW-mN-mFs"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новые поступления" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBf-kw-VLe">
-                                                        <rect key="frame" x="34" y="24" width="155" height="20"/>
+                                                        <rect key="frame" x="10" y="24" width="155" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUC-hO-I8l">
-                                                        <rect key="frame" x="297" y="24" width="42" height="20"/>
+                                                        <rect key="frame" x="337" y="24" width="42" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -746,7 +746,7 @@
                                                     <constraint firstItem="iPI-YH-Dzd" firstAttribute="top" secondItem="nQa-GI-3dT" secondAttribute="top" id="C1o-fK-FdZ"/>
                                                     <constraint firstItem="wNB-g3-oIB" firstAttribute="width" secondItem="xAt-99-xcI" secondAttribute="width" id="D8V-wq-zSi"/>
                                                     <constraint firstItem="wNB-g3-oIB" firstAttribute="top" secondItem="xAt-99-xcI" secondAttribute="top" constant="20" id="DXe-sV-dly"/>
-                                                    <constraint firstItem="dBf-kw-VLe" firstAttribute="leading" secondItem="xAt-99-xcI" secondAttribute="leading" constant="34" id="Dd4-Ip-u0x"/>
+                                                    <constraint firstItem="dBf-kw-VLe" firstAttribute="leading" secondItem="xAt-99-xcI" secondAttribute="leading" constant="10" id="Dd4-Ip-u0x"/>
                                                     <constraint firstItem="DEy-b6-GNB" firstAttribute="centerY" secondItem="nQa-GI-3dT" secondAttribute="centerY" id="EmP-dt-Hef"/>
                                                     <constraint firstItem="UEM-dW-uDE" firstAttribute="width" secondItem="xAt-99-xcI" secondAttribute="width" id="H21-Gc-Rlj"/>
                                                     <constraint firstAttribute="trailing" secondItem="DEy-b6-GNB" secondAttribute="trailing" id="JjA-0I-NS7"/>
@@ -758,7 +758,7 @@
                                                     <constraint firstItem="UEM-dW-uDE" firstAttribute="leading" secondItem="xAt-99-xcI" secondAttribute="leading" id="bk0-1B-akC"/>
                                                     <constraint firstAttribute="trailing" secondItem="UEM-dW-uDE" secondAttribute="trailing" id="c8b-cx-QhO"/>
                                                     <constraint firstItem="wNB-g3-oIB" firstAttribute="leading" secondItem="xAt-99-xcI" secondAttribute="leading" id="gGW-Yz-E0k"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SUC-hO-I8l" secondAttribute="trailing" constant="50" id="gX5-Rm-Ceo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SUC-hO-I8l" secondAttribute="trailing" constant="10" id="gX5-Rm-Ceo"/>
                                                     <constraint firstItem="nQa-GI-3dT" firstAttribute="top" secondItem="wNB-g3-oIB" secondAttribute="bottom" id="njC-Xp-ASt"/>
                                                     <constraint firstItem="iPI-YH-Dzd" firstAttribute="height" secondItem="nQa-GI-3dT" secondAttribute="height" id="rmr-kS-O7r"/>
                                                     <constraint firstAttribute="trailing" secondItem="nQa-GI-3dT" secondAttribute="trailing" id="yi6-Fk-CH3"/>
@@ -851,17 +851,17 @@
                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <segue destination="EP4-nx-MKE" kind="push" identifier="lastProducts" id="mAO-Wk-3Sp"/>
+                                                                    <segue destination="EP4-nx-MKE" kind="push" identifier="topProducts" id="mAO-Wk-3Sp"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лидеры продаж" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPh-mX-oJX">
-                                                                <rect key="frame" x="34" y="7" width="126" height="20"/>
+                                                                <rect key="frame" x="10" y="7" width="126" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Все..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6j-xe-gst">
-                                                                <rect key="frame" x="297" y="8" width="42" height="20"/>
+                                                                <rect key="frame" x="337" y="8" width="42" height="20"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -870,14 +870,14 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="9jl-rG-Nak" firstAttribute="width" secondItem="e8z-0Y-ktx" secondAttribute="width" id="3Ao-B3-OTb"/>
-                                                            <constraint firstItem="zPh-mX-oJX" firstAttribute="leading" secondItem="e8z-0Y-ktx" secondAttribute="leading" constant="34" id="6pK-sM-2Wx"/>
+                                                            <constraint firstItem="zPh-mX-oJX" firstAttribute="leading" secondItem="e8z-0Y-ktx" secondAttribute="leading" constant="10" id="6pK-sM-2Wx"/>
                                                             <constraint firstItem="c6j-xe-gst" firstAttribute="top" secondItem="e8z-0Y-ktx" secondAttribute="top" constant="8" id="EW5-kL-a8e"/>
                                                             <constraint firstAttribute="height" constant="34" id="GDA-iZ-c8Y"/>
                                                             <constraint firstItem="zPh-mX-oJX" firstAttribute="top" secondItem="e8z-0Y-ktx" secondAttribute="top" constant="7" id="IYl-4T-0BZ"/>
                                                             <constraint firstItem="9jl-rG-Nak" firstAttribute="centerY" secondItem="e8z-0Y-ktx" secondAttribute="centerY" id="TN5-Jd-CRk"/>
                                                             <constraint firstItem="9jl-rG-Nak" firstAttribute="height" secondItem="e8z-0Y-ktx" secondAttribute="height" id="VI6-2a-3VX"/>
                                                             <constraint firstItem="9jl-rG-Nak" firstAttribute="centerX" secondItem="e8z-0Y-ktx" secondAttribute="centerX" id="fFo-2S-Qvf"/>
-                                                            <constraint firstAttribute="trailing" secondItem="c6j-xe-gst" secondAttribute="trailing" constant="50" id="kOz-sI-3Ku"/>
+                                                            <constraint firstAttribute="trailing" secondItem="c6j-xe-gst" secondAttribute="trailing" constant="10" id="kOz-sI-3Ku"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -1112,7 +1112,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="стрелочка" translatesAutoresizingMaskIntoConstraints="NO" id="a20-a7-rg8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-icon-16x16" translatesAutoresizingMaskIntoConstraints="NO" id="a20-a7-rg8">
                                                     <rect key="frame" x="350" y="14" width="42" height="16"/>
                                                 </imageView>
                                             </subviews>
@@ -1552,10 +1552,10 @@
             </objects>
             <point key="canvasLocation" x="3004" y="-1079"/>
         </scene>
-        <!--View Controller1-->
+        <!--Poduct View Controller-->
         <scene sceneID="B9O-EF-wT1">
             <objects>
-                <viewController storyboardIdentifier="ProductViewController" id="EP4-nx-MKE" customClass="ViewController1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductViewController" id="EP4-nx-MKE" customClass="VMPoductViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFp-bc-Hrx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1574,7 +1574,7 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" sectionInsetReference="layoutMargins" id="h2l-Dv-bNk" customClass="DSSCollectionViewFlowLayout">
                                     <size key="itemSize" width="189" height="253"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="palceQQ" value="YES"/>
@@ -1599,6 +1599,10 @@
                                                 </label>
                                                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnw-tB-chY" customClass="ShoppingCartBtn">
                                                     <rect key="frame" x="148" y="217" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Nst-wd-YLT"/>
+                                                        <constraint firstAttribute="width" constant="30" id="g54-H6-8x8"/>
+                                                    </constraints>
                                                     <state key="normal" image="TabBar_gift_23x23_"/>
                                                     <connections>
                                                         <action selector="addToCartFromCollectionView:" destination="EP4-nx-MKE" eventType="touchUpInside" id="QCg-iF-UvI"/>
@@ -1669,6 +1673,22 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FooterReusabelView" id="Hqp-Nv-mzI" customClass="FooterCollectionReusableView">
+                                    <rect key="frame" x="0.0" y="261" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-mc-PVs">
+                                            <rect key="frame" x="197" y="15" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="3dg-mc-PVs" firstAttribute="centerY" secondItem="Hqp-Nv-mzI" secondAttribute="centerY" id="XuZ-dR-019"/>
+                                        <constraint firstItem="3dg-mc-PVs" firstAttribute="centerX" secondItem="Hqp-Nv-mzI" secondAttribute="centerX" id="jdg-t6-thv"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="dataLoadingAi" destination="3dg-mc-PVs" id="TBy-vG-S9u"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="EP4-nx-MKE" id="Ial-AL-0eg"/>
                                     <outlet property="delegate" destination="EP4-nx-MKE" id="WRP-Gh-ecP"/>
@@ -2069,7 +2089,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="x7y-D2-VI8" kind="push" id="Zmc-EJ-DIW"/>
+                                                            <segue destination="x7y-D2-VI8" kind="push" identifier="Complete" id="Zmc-EJ-DIW"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -2241,6 +2261,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YX5-Gd-FV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3004.347826086957" y="347.54464285714283"/>
+        </scene>
+        <!--Delivery Map View Controller-->
+        <scene sceneID="iC0-gW-CbZ">
+            <objects>
+                <viewController id="qBy-2G-4pY" customClass="DeliveryMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dUU-KK-eXP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PkX-z4-NHW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PkX-z4-NHW" firstAttribute="top" secondItem="yLH-9F-ELA" secondAttribute="top" id="du7-f4-18Y"/>
+                            <constraint firstItem="yLH-9F-ELA" firstAttribute="trailing" secondItem="PkX-z4-NHW" secondAttribute="trailing" id="hT7-Xm-VmJ"/>
+                            <constraint firstItem="PkX-z4-NHW" firstAttribute="leading" secondItem="yLH-9F-ELA" secondAttribute="leading" id="jDi-yb-D1N"/>
+                            <constraint firstItem="yLH-9F-ELA" firstAttribute="bottom" secondItem="PkX-z4-NHW" secondAttribute="bottom" id="puw-2Y-BSg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yLH-9F-ELA"/>
+                    </view>
+                    <connections>
+                        <outlet property="deliveryMap" destination="PkX-z4-NHW" id="tBF-lL-FEQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OuI-El-6aH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3795.652173913044" y="246.42857142857142"/>
         </scene>
         <!--Акции-->
         <scene sceneID="Uwr-Mu-cDg">
@@ -2720,6 +2769,7 @@
         <image name="TabBar_home_23x23_selected" width="23" height="23"/>
         <image name="TabBar_me_boy_23x23_" width="23" height="23"/>
         <image name="TabBar_me_boy_23x23_selected" width="23" height="23"/>
+        <image name="arrow-icon-16x16" width="128" height="128"/>
         <image name="icondelivery2" width="26" height="20"/>
         <image name="inventonly" width="110" height="109"/>
         <image name="lavkaonly" width="111" height="109"/>
@@ -2730,12 +2780,11 @@
         <image name="баннер вкусный 1" width="1024" height="464"/>
         <image name="доставка" width="504" height="85"/>
         <image name="оформление заказа" width="733" height="144"/>
-        <image name="стрелочка" width="900" height="520"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yXx-Ev-3p5"/>
         <segue reference="SHo-Nf-Vu5"/>
-        <segue reference="bUW-mN-mFs"/>
+        <segue reference="mAO-Wk-3Sp"/>
         <segue reference="fKx-tj-uiq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.88687056303024292" green="0.71392315626144409" blue="0.27406758069992065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

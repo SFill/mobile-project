@@ -14,7 +14,7 @@
 #import "UIViewController+UIViewContollerWithSpinnerCategory.h"
 #import "catalog-app/Section.h"
 #import "CollectiongroupViewController.h"
-#import "catalog-app/ViewController1.h"
+#import "catalog-app/VMPoductViewController.h"
 
 @interface MainPageViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate>{
     NSMutableArray *myObject;
@@ -111,26 +111,27 @@
     [self showSpinner:self.view];
     dispatch_group_t group = dispatch_group_create();
     //dispatch_queue_t queue = dispatch_queue_create("com.app", DISPATCH_QUEUE_CONCURRENT);
-    //[ApplicationData setQueueForManager:queue];
+    
+//    [ApplicationData setQueueForManager:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0)];
     dispatch_group_enter(group);
-    dispatch_async(dispatch_get_main_queue(), ^(void){
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
         [self requestTopProducts:group];
         // need dispatch leave call
     });
     dispatch_group_enter(group);
-    dispatch_async(dispatch_get_main_queue(), ^(void){
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
         [self requestLastProducts:group];
         // need dispatch leave call
     });
     dispatch_group_enter(group);
-    dispatch_async(dispatch_get_main_queue(), ^(void){
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
         [self requestCatalog:group];
         // need dispatch leave call
     });
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         
         NSLog(@"All done");
-        [ApplicationData defaultQueueForManager];
+       // [ApplicationData defaultQueueForManager];
         [self.topProductsCollectionView reloadData];
         [self.lastProductsCollectionView reloadData];
         [self removeSpinner];
@@ -232,14 +233,24 @@
     }else{
         isFiltered = true;
         self.tableViewSearch.hidden = false;
-        [ApplicationData searchCatalog:searchText pageNum:@1 inPage:@20 OnSuccess:^(NSDictionary *data) {
-            self.filteredProcuts = [ApplicationData getProductsFromDict:data];
-            self.tableViewSearch.hidden = false;
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_group_enter(group);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{
+            [ApplicationData searchCatalog:searchText pageNum:@1 inPage:@20 OnSuccess:^(NSDictionary *data) {
+                self.filteredProcuts = [ApplicationData getProductsFromDict:data];
+                //[self removeSpinner];
+                dispatch_group_leave(group);
+            } onFailure:^(NSString *message) {
+                //[self removeSpinner];
+                dispatch_group_leave(group);
+            }];
+        });
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            NSLog(@"Search done");
             [self.tableViewSearch reloadData];
-            //[self removeSpinner];
-        } onFailure:^(NSString *message) {
-            //[self removeSpinner];
-        }];
+        });
+        
+        
 //        NSMutableArray *catalog = [ApplicationData getCatalog];
 //        NSMutableArray *filteredCatalog = [[NSMutableArray alloc]init ];
 //        _filteredProcuts = [[NSMutableArray alloc] init];
@@ -397,62 +408,72 @@
         CollectiongroupViewController *vc = [segue destinationViewController];
         vc.categories = self.dataTransferArray;
         vc.lastProducts = self.lastProducts; // сделать переименование
-        vc.pagesLastProducts = self.pageLastProducts;
+        vc.pagesLastProducts = self.pagesLastProducts;
     }
-    if ([[segue identifier] isEqualToString:@"lastProducts"]){
-        ViewController1 *vc = [segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"topProducts"]){
+        VMPoductViewController *vc = [segue destinationViewController];
         vc.products = self.topProducts;
         vc.pages = self.pagesTopProducts;
         vc.pageNum = self.pageTopProducts;
         vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
-            [ApplicationData getLastItemsForCurrentMonthWithID:@-1 withPageNum:pageNum inPage:@50 OnSuccess:success onFailure:failure];
+            
+             [ApplicationData getTopItems:pageNum inPage:@50 OnSuccess:success onFailure:failure];
+            
         };
         
     }
-    if ([[segue identifier] isEqualToString:@"topProducts"]){
-        ViewController1 *vc = [segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"lastProducts"]){
+        VMPoductViewController *vc = [segue destinationViewController];
         vc.products = self.lastProducts;
         vc.pages = self.pagesLastProducts;
         vc.pageNum = self.pageLastProducts;
         vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
-            [ApplicationData getTopItems:pageNum inPage:@50 OnSuccess:success onFailure:failure];
+            [ApplicationData getLastItemsForCurrentMonthWithID:@-1 withPageNum:pageNum inPage:@50 OnSuccess:success onFailure:failure];
         };
     }
 }
 -(void) segueCategories:(VMCategory*) category sender: (id) sender{
     [self showSpinner:[self view]];
-    [ApplicationData getSubCatalogsWithID:category.ID OnSuccess:^(NSDictionary *data) {
-        NSMutableArray *categrories = [[NSMutableArray alloc] init];
-        if ([data objectForKey:@"RESULT"] == nil) {
-            return;
-        }
-        
-        
-        NSArray *sections = [[data objectForKey:@"RESULT"] objectForKey:@"SECTIONS"];
-        for (NSDictionary *section in sections) {
-            VMCategory *category = [[VMCategory alloc] init];
-            category.parentID = [NSNumber numberWithInteger:[[section objectForKey:@"PARENT"] integerValue]];
-            category.ID = [NSNumber numberWithInteger:[[section objectForKey:@"ID"] integerValue]];
-            category.name = [section objectForKey:@"NAME"];
-            category.code = [section objectForKey:@"CODE"];
-            category.sectionDescription = [section objectForKey:@"DESCRIPTION"];
-            category.imgUrl =[section objectForKey:@"PICTURE"];
-            [categrories addObject:category];
-            // category.active = [[section objectForKey:@"PARENT"] boolValue];
-        }
-        self.dataTransferArray = categrories;
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{
+        [ApplicationData getSubCatalogsWithID:category.ID OnSuccess:^(NSDictionary *data) {
+            NSMutableArray *categrories = [[NSMutableArray alloc] init];
+            if ([data objectForKey:@"RESULT"] == nil) {
+                return;
+            }
+            
+            
+            NSArray *sections = [[data objectForKey:@"RESULT"] objectForKey:@"SECTIONS"];
+            for (NSDictionary *section in sections) {
+                VMCategory *category = [[VMCategory alloc] init];
+                category.parentID = [NSNumber numberWithInteger:[[section objectForKey:@"PARENT"] integerValue]];
+                category.ID = [NSNumber numberWithInteger:[[section objectForKey:@"ID"] integerValue]];
+                category.name = [section objectForKey:@"NAME"];
+                category.code = [section objectForKey:@"CODE"];
+                category.sectionDescription = [section objectForKey:@"DESCRIPTION"];
+                category.imgUrl =[section objectForKey:@"PICTURE"];
+                [categrories addObject:category];
+                // category.active = [[section objectForKey:@"PARENT"] boolValue];
+            }
+            self.dataTransferArray = categrories;
+            dispatch_group_leave(group);
+        } onFailure:^(NSString *message) {
+            dispatch_group_leave(group);
+            //[self removeSpinner];
+        }];
+    });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        NSLog(@"segue to category");
         [self performSegueWithIdentifier:@"Categories" sender:sender];
-//        dispatch_async(dispatch_get_main_queue(), ^(void){
-//           [self performSegueWithIdentifier:@"Categories" sender:sender];
-//        });
+        //        dispatch_async(dispatch_get_main_queue(), ^(void){
+        //           [self performSegueWithIdentifier:@"Categories" sender:sender];
+        //        });
         
         [self removeSpinner];
-        
-        
-    } onFailure:^(NSString *message) {
-        NSLog(@"");
-        [self removeSpinner];
-    }];
+    });
+    
+    
     
 }
 

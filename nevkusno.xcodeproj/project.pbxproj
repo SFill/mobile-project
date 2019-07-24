@@ -24,12 +24,16 @@
 		11FD94C022DC53EC003353E8 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FD94BF22DC53EC003353E8 /* ReviewsViewController.m */; };
 		11FD94C322DC7090003353E8 /* PromotionWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FD94C222DC7090003353E8 /* PromotionWebViewViewController.m */; };
 		11FD94C622DDCF05003353E8 /* UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FD94C522DDCF05003353E8 /* UserSettingsViewController.m */; };
+		11FDDC0B22E730210056D0BC /* DeliveryMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC0A22E730210056D0BC /* DeliveryMapViewController.m */; };
+		11FDDC0E22E731220056D0BC /* VMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC0D22E731220056D0BC /* VMLocationManager.m */; };
+		11FDDC1322E832340056D0BC /* FooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */; };
+		11FDDC1422E832340056D0BC /* FooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */; };
 		782BE61A229FD98800396518 /* GNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 782BE618229FD98800396518 /* GNTableViewCell.m */; };
 		782BE61B229FD98800396518 /* GNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782BE619229FD98800396518 /* GNTableViewCell.xib */; };
 		7838E78921D318E700AC8F4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838E78821D318E700AC8F4A /* ViewController.m */; };
 		7838E78C21D31AD300AC8F4A /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838E78B21D31AD300AC8F4A /* twoViewController.m */; };
 		784243122293F5DA00E51621 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 784243112293F5DA00E51621 /* PickerView.m */; };
-		786465E321D3421D004C96BF /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 786465E121D3421D004C96BF /* ViewController1.m */; };
+		786465E321D3421D004C96BF /* VMPoductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786465E121D3421D004C96BF /* VMPoductViewController.m */; };
 		78A4A1A522981F2400FD21F5 /* DeliveryMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A1A422981F2400FD21F5 /* DeliveryMethod.m */; };
 		78A4A1A72298203B00FD21F5 /* deliveryMethods.xml in Resources */ = {isa = PBXBuildFile; fileRef = 78A4A1A62298203B00FD21F5 /* deliveryMethods.xml */; };
 		78A4A1AA229821FA00FD21F5 /* DeliveryMethodXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A1A9229821FA00FD21F5 /* DeliveryMethodXMLParser.m */; };
@@ -111,6 +115,13 @@
 		11FD94C222DC7090003353E8 /* PromotionWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromotionWebViewViewController.m; sourceTree = "<group>"; };
 		11FD94C422DDCF05003353E8 /* UserSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSettingsViewController.h; sourceTree = "<group>"; };
 		11FD94C522DDCF05003353E8 /* UserSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSettingsViewController.m; sourceTree = "<group>"; };
+		11FDDC0922E730210056D0BC /* DeliveryMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryMapViewController.h; sourceTree = "<group>"; };
+		11FDDC0A22E730210056D0BC /* DeliveryMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryMapViewController.m; sourceTree = "<group>"; };
+		11FDDC0C22E731220056D0BC /* VMLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMLocationManager.h; sourceTree = "<group>"; };
+		11FDDC0D22E731220056D0BC /* VMLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMLocationManager.m; sourceTree = "<group>"; };
+		11FDDC1022E832330056D0BC /* FooterCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FooterCollectionReusableView.h; sourceTree = "<group>"; };
+		11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FooterCollectionReusableView.m; sourceTree = "<group>"; };
+		11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.debug.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.debug.xcconfig"; sourceTree = "<group>"; };
 		360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.release.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.release.xcconfig"; sourceTree = "<group>"; };
 		782BE617229FD98800396518 /* GNTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNTableViewCell.h; sourceTree = "<group>"; };
@@ -122,8 +133,8 @@
 		7838E78B21D31AD300AC8F4A /* twoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = twoViewController.m; sourceTree = "<group>"; };
 		784243102293F5DA00E51621 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		784243112293F5DA00E51621 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
-		786465E121D3421D004C96BF /* ViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
-		786465E221D3421D004C96BF /* ViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
+		786465E121D3421D004C96BF /* VMPoductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMPoductViewController.m; sourceTree = "<group>"; };
+		786465E221D3421D004C96BF /* VMPoductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMPoductViewController.h; sourceTree = "<group>"; };
 		78A4A1A322981F2400FD21F5 /* DeliveryMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryMethod.h; sourceTree = "<group>"; };
 		78A4A1A422981F2400FD21F5 /* DeliveryMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryMethod.m; sourceTree = "<group>"; };
 		78A4A1A62298203B00FD21F5 /* deliveryMethods.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = deliveryMethods.xml; sourceTree = SOURCE_ROOT; };
@@ -253,6 +264,16 @@
 			path = MarketApi;
 			sourceTree = "<group>";
 		};
+		11FDDC0F22E831CD0056D0BC /* ReusableCollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				11FDDC1022E832330056D0BC /* FooterCollectionReusableView.h */,
+				11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */,
+				11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */,
+			);
+			path = ReusableCollectionViewCells;
+			sourceTree = "<group>";
+		};
 		78A4A1AE22984B0F00FD21F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +293,11 @@
 		84B7C1042147CA8900244ACA = {
 			isa = PBXGroup;
 			children = (
+				11FDDC0C22E731220056D0BC /* VMLocationManager.h */,
+				11FDDC0F22E831CD0056D0BC /* ReusableCollectionViewCells */,
+				11FDDC0D22E731220056D0BC /* VMLocationManager.m */,
+				11FDDC0922E730210056D0BC /* DeliveryMapViewController.h */,
+				11FDDC0A22E730210056D0BC /* DeliveryMapViewController.m */,
 				11F8EABE22DE01450021BF58 /* Приложение для кондитера.entitlements */,
 				11FD94C422DDCF05003353E8 /* UserSettingsViewController.h */,
 				11FD94C522DDCF05003353E8 /* UserSettingsViewController.m */,
@@ -389,8 +415,8 @@
 				84D3635B215BD74800BD4127 /* CollectionViewController.m */,
 				7838E78721D318E700AC8F4A /* ViewController.h */,
 				7838E78821D318E700AC8F4A /* ViewController.m */,
-				786465E221D3421D004C96BF /* ViewController1.h */,
-				786465E121D3421D004C96BF /* ViewController1.m */,
+				786465E221D3421D004C96BF /* VMPoductViewController.h */,
+				786465E121D3421D004C96BF /* VMPoductViewController.m */,
 				7838E78A21D31AD300AC8F4A /* twoViewController.h */,
 				7838E78B21D31AD300AC8F4A /* twoViewController.m */,
 				78A4A1A322981F2400FD21F5 /* DeliveryMethod.h */,
@@ -486,6 +512,7 @@
 				CEE5425E222B2F3F00896637 /* TableViewCell.xib in Resources */,
 				84B7C1202147CA8A00244ACA /* LaunchScreen.storyboard in Resources */,
 				78D7325122A7FDD30083B695 /* GNDropTableViewCell.xib in Resources */,
+				11FDDC1422E832340056D0BC /* FooterCollectionReusableView.xib in Resources */,
 				78A4A1A72298203B00FD21F5 /* deliveryMethods.xml in Resources */,
 				84211611214BDE2600CDA348 /* category.xml in Resources */,
 				84211613214BDE3700CDA348 /* catalog.xml in Resources */,
@@ -558,6 +585,7 @@
 				84B7C12B2147D05000244ACA /* ApplicationData.m in Sources */,
 				848A3B96214BBF6000CB6648 /* ApplicationData2.m in Sources */,
 				1163650922A909770065D5EC /* PickPointViewController.m in Sources */,
+				11FDDC0B22E730210056D0BC /* DeliveryMapViewController.m in Sources */,
 				78A4A1AD229832D100FD21F5 /* DeliveryTime.m in Sources */,
 				B537C2BB2296D3A8004D33A7 /* FavoritesTableViewCell.m in Sources */,
 				782BE61A229FD98800396518 /* GNTableViewCell.m in Sources */,
@@ -572,11 +600,12 @@
 				11FD94C322DC7090003353E8 /* PromotionWebViewViewController.m in Sources */,
 				B520D3EF22996821002070D6 /* DeliveryTimeCertain.m in Sources */,
 				B520D3EC22994321002070D6 /* UIPickerViewWithDataSourceProperty.m in Sources */,
-				786465E321D3421D004C96BF /* ViewController1.m in Sources */,
+				786465E321D3421D004C96BF /* VMPoductViewController.m in Sources */,
 				11FD94C022DC53EC003353E8 /* ReviewsViewController.m in Sources */,
 				84B7C1232147CA8A00244ACA /* main.m in Sources */,
 				848A3B99214BC1E800CB6648 /* ThirstViewController.m in Sources */,
 				848A3B93214BBE4C00CB6648 /* VMCategory.m in Sources */,
+				11FDDC0E22E731220056D0BC /* VMLocationManager.m in Sources */,
 				78A64953229BF811003179F8 /* DSSCollectionViewFlowLayout.m in Sources */,
 				7838E78921D318E700AC8F4A /* ViewController.m in Sources */,
 				CEE0C4392200309C005C96EA /* buttontocart.m in Sources */,
@@ -590,6 +619,7 @@
 				1180A2A822D73B540076CFE7 /* UserLoginViewController.m in Sources */,
 				CE22B1B7220BE5CE0020C55A /* SaleViewController.m in Sources */,
 				B537C2B72296C5F0004D33A7 /* favoritesViewController.m in Sources */,
+				11FDDC1322E832340056D0BC /* FooterCollectionReusableView.m in Sources */,
 				1180A2BA22D8761C0076CFE7 /* Section.m in Sources */,
 				78A4A1A522981F2400FD21F5 /* DeliveryMethod.m in Sources */,
 				84B7C1372147D45A00244ACA /* CatalogXMLParser.m in Sources */,

@@ -26,6 +26,8 @@
 @property (nonatomic, copy) NSNumber *stocks_quantity; // склады
 @property (nonatomic, copy) NSNumber *itemId;
 @property (nonatomic, copy) NSString *unit;
+@property (nonatomic) BOOL inCart;
+@property (nonatomic) BOOL inFav;
 @property (nonatomic) UIImage *previewImg;
 @property (nonatomic) UIImage *detailImg;
 @property (nonatomic) NSMutableArray *reviews;

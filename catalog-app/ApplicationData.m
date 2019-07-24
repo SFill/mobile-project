@@ -23,7 +23,7 @@
 @property (nonatomic, retain) NSMutableArray *cart;
 @property (nonatomic, retain) NSMutableArray *favorites;
 @property (nonatomic, retain) NSMutableArray *deliveryMethods;
-@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, retain) VMLocationManager *locationManager;
 @property  BOOL isAuth;
 
 
@@ -57,8 +57,8 @@ static ApplicationDataInternal *sharedApplicationData = nil;
                 sharedApplicationData.deliveryMethods = [[NSMutableArray alloc] init];
                 sharedApplicationData.token = [[NSString alloc] init];
                 sharedApplicationData.isAuth = NO;
-                sharedApplicationData.locationManager = [[CLLocationManager alloc] init];
-                
+                sharedApplicationData.locationManager = [[VMLocationManager alloc] init];
+                [self setQueueForManager:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0)];
             }
         }
         return sharedApplicationData;
@@ -277,7 +277,7 @@ static ApplicationDataInternal *sharedApplicationData = nil;
     for (NSDictionary *productItem in productItems) {
         Product *product = [[Product alloc] init];
         product.name = [productItem objectForKey:@"NAME"];
-        product.amount = @"1";
+        product.amount = @1;
         product.itemId = [productItem objectForKey:@"ID"];
         NSNumber *price =(NSNumber*)[[productItem objectForKey:@"PRICES"] objectForKey:@"DISCOUNT_PRICE"];
         
@@ -310,9 +310,7 @@ static ApplicationDataInternal *sharedApplicationData = nil;
 }
 
 +(void) registerForGeolocation{
-    CLLocationManager *locationManager = [self getInternal].locationManager;
-//    locationManager =
-    [locationManager requestWhenInUseAuthorization];
+   [[self getInternal].locationManager requestWhenInUseAuthorization];
 }
 
 +(NSString*) getGelocationStatus{
@@ -355,7 +353,7 @@ static ApplicationDataInternal *sharedApplicationData = nil;
     }
 }
 
-+(bool)isAuthedUser{
++(BOOL)isAuthedUser{
     return [self getInternal].isAuth;
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "twoViewController.h"
-#import "ViewController1.h"
+#import "VMPoductViewController.h"
 
 @interface twoViewController ()
 

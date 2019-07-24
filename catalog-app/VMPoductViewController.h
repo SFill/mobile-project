@@ -11,8 +11,7 @@
 #import "VMCategory.h"
 
 
-@interface ViewController1 : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>{
-//    __strong NSNumber *pageNum;
+@interface VMPoductViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>{
     BOOL waiting;
 }
 typedef void (^ SuccessBlock)(NSDictionary*);

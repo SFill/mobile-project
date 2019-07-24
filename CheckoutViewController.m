@@ -556,7 +556,7 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     
-    if (![self validateEmailWithString:_emailField.text]) {
+    if (([identifier isEqualToString:@"Complete"])&![self validateEmailWithString:_emailField.text]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Не корректный почтовый ящик" message:@"Заполните поле почтовый ящик правильно" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return false;
