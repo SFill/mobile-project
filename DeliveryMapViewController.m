@@ -8,7 +8,7 @@
 
 #import "DeliveryMapViewController.h"
 
-@interface DeliveryMapViewController ()<MKMapViewDelegate>
+@interface DeliveryMapViewController ()<MKMapViewDelegate,WKScriptMessageHandler>
 
 @end
 
@@ -17,11 +17,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.deliveryMap.delegate =self;
+//    NSString *html = @"<html><head><script type=\"text/javascript\" src=\"https://pickpoint.ru/select/postamat.js\" charset=\"utf-8\"></script></head><body><script>my_func=function(val){};ff=function(){PickPoint.open(my_func,{ikn: '9990544011'})}</script><button onClick=""></button></body></html>";
     //[self.locationManager startUpda
     CLLocation *location = [self.locationManager location];
     [self centerMapOnLocation:location];
     [self setAnnotaions:location];
+    
+    WKUserContentController *userController = [[WKUserContentController alloc] init];
+    [userController addScriptMessageHandler:self name:@"toController"];
+    
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.userContentController = userController;
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+    //NSURL *url = [[NSBundle mainBundle] URLForResource: @"ModelPage" withExtension: @"html"];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://localhost:8080/pickpoint/#"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: url];
+    
+    [self.webView loadRequest: request];
+    self.webView.navigationDelegate =self;
+    [self.view addSubview:self.webView];
+    
+    //[self.webView loadFileURL:[NSURL] allowingReadAccessToURL:<#(nonnull NSURL *)#>]
     // Do any additional setup after loading the view.
+}
+
+//- (void)webView:(WKWebView *)webView
+//didFinishNavigation:(WKNavigation *)navigation{
+//    NSString *jsCode = @"PickPoint.open(my_function, {fromcity:'Владимир'});return false";
+//    [self.webView evaluateJavaScript:jsCode completionHandler:^(id _Nullable arg, NSError * _Nullable error) {
+//        NSLog(@"error in js code");
+//    }];
+//}
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+    NSDictionary *pickPointResponse = (NSDictionary*) message.body;
+    NSArray *keys = [pickPointResponse allKeys];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void) centerMapOnLocation:(CLLocation*) location{

@@ -1,0 +1,33 @@
+<html>
+<header>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+    <style>
+        section {
+            color: orange;
+            border-radius: 2px;
+            padding: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            
+        }
+    </style>
+</header>
+<body>
+<script type="text/javascript" src="https://pickpoint.ru/select/postamat.js"></script>
+<section>
+    <form mtehod="post">
+        <button onClick="PickPoint.open(my_function);return false;" style="margin:0 auto">Выбрать адрес</button>
+    </form>
+</section>
+<script type="text/javascript">
+    function my_function(result){
+         window.webkit.messageHandlers.toController.postMessage(result);
+    }
+</script>
+
+
+</body>
+</html>

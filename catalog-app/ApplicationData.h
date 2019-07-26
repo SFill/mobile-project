@@ -43,5 +43,8 @@
 +(void) registerForGeolocation;
 +(NSString*) getGelocationStatus;
 +(BOOL)isAuthedUser;
++(NSMutableArray*) getCities;
++(NSMutableArray*) getCitySections;
++(NSMutableArray*) getCityNameFirstLetters;
 
 @end

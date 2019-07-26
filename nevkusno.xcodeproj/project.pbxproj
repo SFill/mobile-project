@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113A5D2522E9A5960032DB3D /* UIKitExtensionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */; };
+		113A5D2C22E9B74C0032DB3D /* PickPointApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2B22E9B74C0032DB3D /* PickPointApi.m */; };
+		113A5D2F22E9C7000032DB3D /* PickPointCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2E22E9C7000032DB3D /* PickPointCity.m */; };
+		113A5D3322E9DEBF0032DB3D /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */; };
 		1163650622A902360065D5EC /* DetailTextDeliveryVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163650522A902360065D5EC /* DetailTextDeliveryVCViewController.m */; };
 		1163650922A909770065D5EC /* PickPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163650822A909770065D5EC /* PickPointViewController.m */; };
 		1163650B22A90B800065D5EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1163650A22A90B800065D5EC /* WebKit.framework */; };
+		11803F8C22EA9C320044F433 /* ModelPage.html in Resources */ = {isa = PBXBuildFile; fileRef = 11803F8B22EA9C320044F433 /* ModelPage.html */; };
+		11803F8E22EAABC90044F433 /* GCDWebServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11803F8D22EAABC90044F433 /* GCDWebServer.framework */; };
 		1180A2A322D62D990076CFE7 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1180A2A222D62D990076CFE7 /* AFNetworking.framework */; };
-		1180A2A522D62FCD0076CFE7 /* Pods_Приложение_для_кондитера.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1180A2A422D62FCD0076CFE7 /* Pods_Приложение_для_кондитера.framework */; };
 		1180A2A822D73B540076CFE7 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2A722D73B540076CFE7 /* UserLoginViewController.m */; };
 		1180A2B122D7470A0076CFE7 /* UIViewController+UIViewContollerWithSpinnerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2B022D7470A0076CFE7 /* UIViewController+UIViewContollerWithSpinnerCategory.m */; };
 		1180A2B722D8543F0076CFE7 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2B622D8543F0076CFE7 /* MainPageViewController.m */; };
@@ -28,6 +33,7 @@
 		11FDDC0E22E731220056D0BC /* VMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC0D22E731220056D0BC /* VMLocationManager.m */; };
 		11FDDC1322E832340056D0BC /* FooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */; };
 		11FDDC1422E832340056D0BC /* FooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */; };
+		7275D3CEAA782654E0C8F17A /* Pods_nevkusno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */; };
 		782BE61A229FD98800396518 /* GNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 782BE618229FD98800396518 /* GNTableViewCell.m */; };
 		782BE61B229FD98800396518 /* GNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782BE619229FD98800396518 /* GNTableViewCell.xib */; };
 		7838E78921D318E700AC8F4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838E78821D318E700AC8F4A /* ViewController.m */; };
@@ -83,14 +89,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		113A5D2322E9A5950032DB3D /* nevkusno-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nevkusno-Bridging-Header.h"; sourceTree = "<group>"; };
+		113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensionWrapper.swift; sourceTree = "<group>"; };
+		113A5D2A22E9B74C0032DB3D /* PickPointApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickPointApi.h; sourceTree = "<group>"; };
+		113A5D2B22E9B74C0032DB3D /* PickPointApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickPointApi.m; sourceTree = "<group>"; };
+		113A5D2D22E9C7000032DB3D /* PickPointCity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickPointCity.h; sourceTree = "<group>"; };
+		113A5D2E22E9C7000032DB3D /* PickPointCity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickPointCity.m; sourceTree = "<group>"; };
+		113A5D3122E9DEBF0032DB3D /* CityTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
 		113E1F3922D5E98800026EF7 /* api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
 		1163650422A902360065D5EC /* DetailTextDeliveryVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTextDeliveryVCViewController.h; sourceTree = "<group>"; };
 		1163650522A902360065D5EC /* DetailTextDeliveryVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTextDeliveryVCViewController.m; sourceTree = "<group>"; };
 		1163650722A909770065D5EC /* PickPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickPointViewController.h; sourceTree = "<group>"; };
 		1163650822A909770065D5EC /* PickPointViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickPointViewController.m; sourceTree = "<group>"; };
 		1163650A22A90B800065D5EC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		11803F8B22EA9C320044F433 /* ModelPage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ModelPage.html; sourceTree = "<group>"; };
+		11803F8D22EAABC90044F433 /* GCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1180A2A222D62D990076CFE7 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1180A2A422D62FCD0076CFE7 /* Pods_Приложение_для_кондитера.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = "Pods_Приложение_для_кондитера.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1180A2A622D73B540076CFE7 /* UserLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
 		1180A2A722D73B540076CFE7 /* UserLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
 		1180A2AF22D7470A0076CFE7 /* UIViewController+UIViewContollerWithSpinnerCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIViewContollerWithSpinnerCategory.h"; sourceTree = "<group>"; };
@@ -124,6 +139,7 @@
 		11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.debug.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.debug.xcconfig"; sourceTree = "<group>"; };
 		360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.release.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.release.xcconfig"; sourceTree = "<group>"; };
+		6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.release.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.release.xcconfig"; sourceTree = "<group>"; };
 		782BE617229FD98800396518 /* GNTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNTableViewCell.h; sourceTree = "<group>"; };
 		782BE618229FD98800396518 /* GNTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNTableViewCell.m; sourceTree = "<group>"; };
 		782BE619229FD98800396518 /* GNTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GNTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +201,7 @@
 		84B7C1362147D45A00244ACA /* CatalogXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogXMLParser.m; sourceTree = "<group>"; };
 		84D3635A215BD74700BD4127 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		84D3635B215BD74800BD4127 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nevkusno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B520D3EA22994321002070D6 /* UIPickerViewWithDataSourceProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPickerViewWithDataSourceProperty.h; sourceTree = "<group>"; };
 		B520D3EB22994321002070D6 /* UIPickerViewWithDataSourceProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPickerViewWithDataSourceProperty.m; sourceTree = "<group>"; };
 		B520D3ED22996821002070D6 /* DeliveryTimeCertain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryTimeCertain.h; sourceTree = "<group>"; };
@@ -217,6 +234,7 @@
 		CEE5425A222B2F3F00896637 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		CEE5425B222B2F3F00896637 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		CEE5425C222B2F3F00896637 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.debug.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.debug.xcconfig"; sourceTree = "<group>"; };
 		F3023C5E6174964AA3C9CA41 /* Pods_________________________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________________________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,13 +243,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11803F8E22EAABC90044F433 /* GCDWebServer.framework in Frameworks */,
 				11F8EABD22DDE97C0021BF58 /* MapKit.framework in Frameworks */,
 				11F8EABB22DDD2180021BF58 /* CoreLocation.framework in Frameworks */,
-				1180A2A522D62FCD0076CFE7 /* Pods_Приложение_для_кондитера.framework in Frameworks */,
 				1180A2A322D62D990076CFE7 /* AFNetworking.framework in Frameworks */,
 				1163650B22A90B800065D5EC /* WebKit.framework in Frameworks */,
 				78A4A1B222984B1C00FD21F5 /* libz.tbd in Frameworks */,
 				78A4A1B022984B1000FD21F5 /* libxml2.tbd in Frameworks */,
+				7275D3CEAA782654E0C8F17A /* Pods_nevkusno.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +262,40 @@
 			children = (
 				22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */,
 				360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */,
+				DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */,
+				6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		113A5D2222E9A5640032DB3D /* SwiftWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */,
+				113A5D2322E9A5950032DB3D /* nevkusno-Bridging-Header.h */,
+			);
+			path = SwiftWrappers;
+			sourceTree = "<group>";
+		};
+		113A5D2622E9B6620032DB3D /* PickPointApi */ = {
+			isa = PBXGroup;
+			children = (
+				113A5D2A22E9B74C0032DB3D /* PickPointApi.h */,
+				113A5D2B22E9B74C0032DB3D /* PickPointApi.m */,
+				113A5D2D22E9C7000032DB3D /* PickPointCity.h */,
+				113A5D2E22E9C7000032DB3D /* PickPointCity.m */,
+				11803F8B22EA9C320044F433 /* ModelPage.html */,
+			);
+			path = PickPointApi;
+			sourceTree = "<group>";
+		};
+		113A5D3022E9DE910032DB3D /* ViewContollers */ = {
+			isa = PBXGroup;
+			children = (
+				113A5D3122E9DEBF0032DB3D /* CityTableViewController.h */,
+				113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */,
+			);
+			path = ViewContollers;
 			sourceTree = "<group>";
 		};
 		1180A2BB22D87A200076CFE7 /* Segues */ = {
@@ -277,15 +328,16 @@
 		78A4A1AE22984B0F00FD21F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11803F8D22EAABC90044F433 /* GCDWebServer.framework */,
 				11F8EABC22DDE97C0021BF58 /* MapKit.framework */,
 				11F8EABA22DDD2180021BF58 /* CoreLocation.framework */,
-				1180A2A422D62FCD0076CFE7 /* Pods_Приложение_для_кондитера.framework */,
 				1180A2A222D62D990076CFE7 /* AFNetworking.framework */,
 				11A8A37F22D61436000FA533 /* AFNetworking.framework */,
 				1163650A22A90B800065D5EC /* WebKit.framework */,
 				78A4A1B122984B1C00FD21F5 /* libz.tbd */,
 				78A4A1AF22984B1000FD21F5 /* libxml2.tbd */,
 				F3023C5E6174964AA3C9CA41 /* Pods_________________________.framework */,
+				AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -293,6 +345,9 @@
 		84B7C1042147CA8900244ACA = {
 			isa = PBXGroup;
 			children = (
+				113A5D3022E9DE910032DB3D /* ViewContollers */,
+				113A5D2622E9B6620032DB3D /* PickPointApi */,
+				113A5D2222E9A5640032DB3D /* SwiftWrappers */,
 				11FDDC0C22E731220056D0BC /* VMLocationManager.h */,
 				11FDDC0F22E831CD0056D0BC /* ReusableCollectionViewCells */,
 				11FDDC0D22E731220056D0BC /* VMLocationManager.m */,
@@ -477,6 +532,7 @@
 				TargetAttributes = {
 					84B7C10C2147CA8900244ACA = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -512,6 +568,7 @@
 				CEE5425E222B2F3F00896637 /* TableViewCell.xib in Resources */,
 				84B7C1202147CA8A00244ACA /* LaunchScreen.storyboard in Resources */,
 				78D7325122A7FDD30083B695 /* GNDropTableViewCell.xib in Resources */,
+				11803F8C22EA9C320044F433 /* ModelPage.html in Resources */,
 				11FDDC1422E832340056D0BC /* FooterCollectionReusableView.xib in Resources */,
 				78A4A1A72298203B00FD21F5 /* deliveryMethods.xml in Resources */,
 				84211611214BDE2600CDA348 /* category.xml in Resources */,
@@ -532,15 +589,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-nevkusno/Pods-nevkusno-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-nevkusno/Pods-nevkusno-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nevkusno/Pods-nevkusno-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EEA1BF680542FC13D702D54E /* [CP] Check Pods Manifest.lock */ = {
@@ -558,7 +615,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Приложение для кондитера-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-nevkusno-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -614,8 +671,12 @@
 				84B03F08214AD3020040CAF7 /* InventoryViewController.m in Sources */,
 				11FD94C622DDCF05003353E8 /* UserSettingsViewController.m in Sources */,
 				78A4A1AA229821FA00FD21F5 /* DeliveryMethodXMLParser.m in Sources */,
+				113A5D2522E9A5960032DB3D /* UIKitExtensionWrapper.swift in Sources */,
+				113A5D2C22E9B74C0032DB3D /* PickPointApi.m in Sources */,
 				1180A2BE22D87A5E0076CFE7 /* UIStoryboardSegueToItself.m in Sources */,
 				84D3635C215BD74800BD4127 /* CollectionViewController.m in Sources */,
+				113A5D3322E9DEBF0032DB3D /* CityTableViewController.m in Sources */,
+				113A5D2F22E9C7000032DB3D /* PickPointCity.m in Sources */,
 				1180A2A822D73B540076CFE7 /* UserLoginViewController.m in Sources */,
 				CE22B1B7220BE5CE0020C55A /* SaleViewController.m in Sources */,
 				B537C2B72296C5F0004D33A7 /* favoritesViewController.m in Sources */,
@@ -764,9 +825,10 @@
 		};
 		84B7C1272147CA8A00244ACA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */;
+			baseConfigurationReference = DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 764WQ8GLR3;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -782,15 +844,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nevkusno.ru.catalog-app-for-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWrappers/nevkusno-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		84B7C1282147CA8A00244ACA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */;
+			baseConfigurationReference = 6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 764WQ8GLR3;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -806,6 +872,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nevkusno.ru.catalog-app-for-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWrappers/nevkusno-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

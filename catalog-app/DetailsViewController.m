@@ -40,7 +40,7 @@
     self.country.text = self.product.city;
     self.stars.text = self.product.stars;
     NSString *headerString = @"<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>";
-    [self.webViewDescription loadHTMLString:[headerString stringByAppendingString:self.product.pDescription] baseURL:[[NSURL alloc] initWithString:@"http://nevkusno.ru/"]];
+    [self.webViewDescription loadHTMLString:[headerString stringByAppendingString:self.product.pDescription] baseURL:[[NSURL alloc] initWithString:@"https://nevkusno.ru/"]];
     NSString *star = @"★";
     NSString *emptyStar = @"☆";
     NSMutableString *rateStarString = [[NSMutableString alloc]init];

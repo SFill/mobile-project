@@ -5,12 +5,14 @@
 //  Created by Admin on 11.09.2018.
 //  Copyright © 2018 Admin. All rights reserved.
 //
-
 #import "AppDelegate.h"
 #import "ApplicationData.h"
+#import "GCDWebServer.h"
+#import "GCDWebServerDataResponse.h"
 
-@interface AppDelegate ()
-
+@interface AppDelegate (){
+    GCDWebServer* _webServer;
+}
 @end
 
 @implementation AppDelegate
@@ -22,7 +24,23 @@
     [NSUserDefaults.standardUserDefaults setObject:@[@"RU"] forKey:@"AppleLanguages"];
     [self registerForRemoteNotifications];
     [ApplicationData registerForGeolocation];
-    // Override point for customization after application launch.
+    
+    _webServer = [[GCDWebServer alloc] init];
+    
+    // Add a handler to respond to GET requests on any URL
+    NSString* websitePath = [[NSBundle mainBundle] pathForResource:@"ModelPage" ofType:@".html"];
+    [_webServer addHandlerForMethod:@"GET"
+                          pathRegex:@"/pickpoint/"
+                       requestClass:[GCDWebServerRequest class]
+                       processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+                                  
+                                  return [GCDWebServerDataResponse responseWithHTMLTemplate:websitePath variables:@{}];
+                                  
+                              }];
+    
+    // Start server on port 8080
+    [_webServer startWithPort:8080 bonjourName:nil];
+    
     return YES;
 }
 

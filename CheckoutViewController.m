@@ -11,7 +11,9 @@
 #import "catalog-app/DeliveryMethod.h"
 #import "catalog-app/DeliveryTime.h"
 #import "UIPickerViewWithDataSourceProperty.h"
-@interface CheckoutViewController ()
+#import "ViewContollers/CityTableViewController.h"
+#import "nevkusno-Swift.h"
+@interface CheckoutViewController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @end
 
@@ -29,15 +31,15 @@
     _goodsPrice.text = _adb_rg;
     delivery_dates =[NSMutableArray arrayWithObjects:@"26.05.2019",@"27.05.2019",@"28.05.2019",@"29.05.2019",@"30.05.2019",nil];
     _deliveryDatesPicker = [[UIPickerViewWithDataSourceProperty alloc] initWithDataArray:delivery_dates];
-    _deliveryDatesPicker.delegate = _deliveryDatesPicker;
-    _deliveryDatesPicker.dataSource = _deliveryDatesPicker;
+//    _deliveryDatesPicker.delegate = _deliveryDatesPicker;
+//    _deliveryDatesPicker.dataSource = _deliveryDatesPicker;
     [_deliveryTimeEditField setText:@"Выбирите дату доставки"];
     [_deliveryTimeEditField setInputView:_deliveryDatesPicker];
     
     delivery_times =[NSMutableArray arrayWithObjects:@"c 10 до 18",@"c 10 до 15",@"c 13 до 18",nil];
     _deliveryTimesPicker = [[UIPickerViewWithDataSourceProperty alloc] initWithDataArray:delivery_times];
-    _deliveryTimesPicker.delegate = _deliveryTimesPicker;
-    _deliveryTimesPicker.dataSource = _deliveryTimesPicker;
+//    _deliveryTimesPicker.delegate = _deliveryTimesPicker;
+//    _deliveryTimesPicker.dataSource = _deliveryTimesPicker;
     [_deliveryCertainTime setInputView:_deliveryTimesPicker];
     
     _leadToFinalScreen.layer.cornerRadius =10;
@@ -124,7 +126,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
     NSString * title = nil;
-    int selected_row = [pickerView selectedRowInComponent:0];
+    long selected_row = [pickerView selectedRowInComponent:0];
     if (selected_row < 22){
         [_deliveryTimeEditField setText:@"Выбирите дату доставки"];
         [_deliveryCertainTime setText:@"Выбирите время доставки"];
@@ -460,6 +462,7 @@
 }
 - (BOOL)validateEmailWithString:(NSString*)email
 {
+    email = [email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
@@ -565,6 +568,15 @@
     return true;
 }
 
+- (IBAction)selectCity:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CityTableViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"CityTableViewController"];
+    vc.calbackBlock = ^(PickPointCity * _Nonnull city) {
+        self.city = city;
+        [self.cityLabel setTitle:city.name forState:UIControlStateNormal];
+    };
+    [self presentCard:vc];
+}
 
 @end
 

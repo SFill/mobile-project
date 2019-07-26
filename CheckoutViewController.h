@@ -10,6 +10,7 @@
 # import "UIPickerViewWithDataSourceProperty.h"
 #import "catalog-app/DeliveryMethod.h"
 #import "catalog-app/DeliveryTime.h"
+#import "PickPointApi/PickPointCity.h"
 
 @interface CheckoutViewController : UIViewController<UITextFieldDelegate>{
     DeliveryMethod *_selectedDeliveryMethod;
@@ -49,6 +50,7 @@
 - (IBAction)upOutside:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UIButton *cityLabel;
+@property PickPointCity *city;
 
 @end
 

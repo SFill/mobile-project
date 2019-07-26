@@ -11,7 +11,9 @@
 //#import "<AFNetworking/AFNetworking.h"
 //#import "DeliveryMethodXMLParser.h"
 #import "../MarketApi/api.m"
+#import "../PickPointApi/PickPointApi.h"
 #import "VMCategory.h"
+#import "../PickPointApi/PickPointCity.h"
 
 
 @interface ApplicationDataInternal : NSObject
@@ -24,6 +26,9 @@
 @property (nonatomic, retain) NSMutableArray *favorites;
 @property (nonatomic, retain) NSMutableArray *deliveryMethods;
 @property (nonatomic, retain) VMLocationManager *locationManager;
+@property (nonatomic, retain) NSMutableArray *pickPointCities;
+@property (nonatomic, retain) NSMutableArray *pickPointCityNameFirstLetters;
+@property (nonatomic, retain) NSMutableArray *pickPointCitySections;
 @property  BOOL isAuth;
 
 
@@ -50,11 +55,12 @@ static ApplicationDataInternal *sharedApplicationData = nil;
             if (!sharedApplicationData)
             {
                 sharedApplicationData       = [[ApplicationDataInternal alloc] init];
-                
                 sharedApplicationData.catalog = [[NSMutableArray alloc] init];
                 sharedApplicationData.cart = [[NSMutableArray alloc] init];
                 sharedApplicationData.favorites = [[NSMutableArray alloc] init];
                 sharedApplicationData.deliveryMethods = [[NSMutableArray alloc] init];
+                sharedApplicationData.pickPointCities = [[NSMutableArray alloc] init];
+                sharedApplicationData.pickPointCitySections = [[NSMutableArray alloc] init];
                 sharedApplicationData.token = [[NSString alloc] init];
                 sharedApplicationData.isAuth = NO;
                 sharedApplicationData.locationManager = [[VMLocationManager alloc] init];
@@ -71,6 +77,7 @@ static ApplicationDataInternal *sharedApplicationData = nil;
     CatalogXMLParser *parser = [[CatalogXMLParser alloc] init];
     
     [self getInternal].catalog = [parser parse];
+    [self loadCities];
     
 //    DeliveryMethodXMLParser *parser_for_methods = [[DeliveryMethodXMLParser alloc] init];
 //
@@ -357,6 +364,50 @@ static ApplicationDataInternal *sharedApplicationData = nil;
     return [self getInternal].isAuth;
 }
 
+
++(void) loadCities{
+  PickPointApi *api =   [PickPointApi getInstance];
+    [api getCititesOnSuccess:^(NSDictionary * _Nonnull data) {
+        NSMutableArray *pickPointCities = [self getInternal].pickPointCities;
+        NSMutableArray *pickPointCitiesFirstLetters = [[NSMutableArray alloc] init];
+        for (NSDictionary *item in [data objectForKey:@"RESULT"]) {
+            PickPointCity *city = [[PickPointCity alloc] init];
+            [city setValuesForKeysWithDictionary:item];
+            [pickPointCities addObject:city];
+            [pickPointCitiesFirstLetters addObject:[city nameFistLetter]];
+        }
+        NSSet *set = [[NSSet alloc] initWithArray:pickPointCitiesFirstLetters];
+        [self getInternal].pickPointCityNameFirstLetters = [NSMutableArray arrayWithArray:[set allObjects]];
+        [[self getInternal].pickPointCityNameFirstLetters sortUsingSelector:@selector(compare:)];
+        for (NSString *letter in [self getInternal].pickPointCityNameFirstLetters) {
+            NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                PickPointCity *city = (PickPointCity*) evaluatedObject;
+                return [letter isEqualToString:[city nameFistLetter]];
+            }];
+            NSMutableArray *filteredCityes = (NSMutableArray*)[[pickPointCities filteredArrayUsingPredicate:predicate] mutableCopy];
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                         ascending:YES];
+            
+            [filteredCityes sortUsingDescriptors:@[sortDescriptor]];
+            [[self getInternal].pickPointCitySections addObject:filteredCityes];
+        }
+        NSLog(@"");
+       
+    } onFailure:^(AFHTTPRequestOperation * _Nullable operation) {
+        
+    }];
+}
+
++(NSMutableArray*) getCities{
+    return [self getInternal].pickPointCities;
+}
++(NSMutableArray*) getCitySections{
+    return [self getInternal].pickPointCitySections;
+}
+
++(NSMutableArray*) getCityNameFirstLetters{
+    return [self getInternal].pickPointCityNameFirstLetters;
+}
 
 @end
 
