@@ -10,7 +10,7 @@
 #import "catalog-app/ApplicationData.h"
 
 
-@interface UserSettingsViewController ()
+@interface UserSettingsViewController ()<CLLocationManagerDelegate>
 
 @end
 

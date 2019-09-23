@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1106C6B2230458FA00B39CEB /* UserMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1106C6B1230458FA00B39CEB /* UserMenuTableViewController.m */; };
+		110DE50E22EF04A1005BDE03 /* VMOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 110DE50D22EF04A1005BDE03 /* VMOrder.m */; };
+		110DE51122EF1463005BDE03 /* VMOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110DE51022EF1463005BDE03 /* VMOrderTableViewController.m */; };
+		11345DF722EDC8D60038B6A5 /* VMCreateOrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11345DF622EDC8D60038B6A5 /* VMCreateOrderObject.m */; };
 		113A5D2522E9A5960032DB3D /* UIKitExtensionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */; };
 		113A5D2C22E9B74C0032DB3D /* PickPointApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2B22E9B74C0032DB3D /* PickPointApi.m */; };
 		113A5D2F22E9C7000032DB3D /* PickPointCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D2E22E9C7000032DB3D /* PickPointCity.m */; };
 		113A5D3322E9DEBF0032DB3D /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */; };
+		113C40EA22EAFB8800403FB6 /* VMDeliveryMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 113C40E922EAFB8800403FB6 /* VMDeliveryMethod.m */; };
 		1163650622A902360065D5EC /* DetailTextDeliveryVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163650522A902360065D5EC /* DetailTextDeliveryVCViewController.m */; };
 		1163650922A909770065D5EC /* PickPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163650822A909770065D5EC /* PickPointViewController.m */; };
 		1163650B22A90B800065D5EC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1163650A22A90B800065D5EC /* WebKit.framework */; };
@@ -22,6 +27,8 @@
 		1180A2B722D8543F0076CFE7 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2B622D8543F0076CFE7 /* MainPageViewController.m */; };
 		1180A2BA22D8761C0076CFE7 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2B822D8761C0076CFE7 /* Section.m */; };
 		1180A2BE22D87A5E0076CFE7 /* UIStoryboardSegueToItself.m in Sources */ = {isa = PBXBuildFile; fileRef = 1180A2BD22D87A5E0076CFE7 /* UIStoryboardSegueToItself.m */; };
+		11BE790F22EDB053004D3275 /* UIPickerVilewWithTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BE790E22EDB053004D3275 /* UIPickerVilewWithTextField.m */; };
+		11BE791222EDBB69004D3275 /* VMPriceRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BE791122EDBB69004D3275 /* VMPriceRange.m */; };
 		11D6BB3222A9182500241D36 /* DeliveryRussiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6BB3122A9182500241D36 /* DeliveryRussiaViewController.m */; };
 		11D6BB3522A9273D00241D36 /* DeliveryPickupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D6BB3422A9273D00241D36 /* DeliveryPickupViewController.m */; };
 		11F8EABB22DDD2180021BF58 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F8EABA22DDD2180021BF58 /* CoreLocation.framework */; };
@@ -33,13 +40,12 @@
 		11FDDC0E22E731220056D0BC /* VMLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC0D22E731220056D0BC /* VMLocationManager.m */; };
 		11FDDC1322E832340056D0BC /* FooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */; };
 		11FDDC1422E832340056D0BC /* FooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */; };
-		7275D3CEAA782654E0C8F17A /* Pods_nevkusno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */; };
+		1620399A884B73DFB36B81F6 /* Pods_nevkusno.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F464A30C20656DEF0DB3F /* Pods_nevkusno.framework */; };
 		782BE61A229FD98800396518 /* GNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 782BE618229FD98800396518 /* GNTableViewCell.m */; };
 		782BE61B229FD98800396518 /* GNTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782BE619229FD98800396518 /* GNTableViewCell.xib */; };
 		7838E78921D318E700AC8F4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838E78821D318E700AC8F4A /* ViewController.m */; };
-		7838E78C21D31AD300AC8F4A /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838E78B21D31AD300AC8F4A /* twoViewController.m */; };
 		784243122293F5DA00E51621 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 784243112293F5DA00E51621 /* PickerView.m */; };
-		786465E321D3421D004C96BF /* VMPoductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786465E121D3421D004C96BF /* VMPoductViewController.m */; };
+		786465E321D3421D004C96BF /* VMProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786465E121D3421D004C96BF /* VMProductViewController.m */; };
 		78A4A1A522981F2400FD21F5 /* DeliveryMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A1A422981F2400FD21F5 /* DeliveryMethod.m */; };
 		78A4A1A72298203B00FD21F5 /* deliveryMethods.xml in Resources */ = {isa = PBXBuildFile; fileRef = 78A4A1A62298203B00FD21F5 /* deliveryMethods.xml */; };
 		78A4A1AA229821FA00FD21F5 /* DeliveryMethodXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A1A9229821FA00FD21F5 /* DeliveryMethodXMLParser.m */; };
@@ -56,7 +62,6 @@
 		848A3B90214BBA6900CB6648 /* CategoryXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A3B8E214BBA6800CB6648 /* CategoryXMLParser.m */; };
 		848A3B93214BBE4C00CB6648 /* VMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A3B91214BBE4B00CB6648 /* VMCategory.m */; };
 		848A3B96214BBF6000CB6648 /* ApplicationData2.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A3B95214BBF5F00CB6648 /* ApplicationData2.m */; };
-		848A3B99214BC1E800CB6648 /* ThirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A3B97214BC1E700CB6648 /* ThirstViewController.m */; };
 		84B03F08214AD3020040CAF7 /* InventoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B03F07214AD3020040CAF7 /* InventoryViewController.m */; };
 		84B7C1122147CA8900244ACA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C1112147CA8900244ACA /* AppDelegate.m */; };
 		84B7C1152147CA8900244ACA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C1142147CA8900244ACA /* FirstViewController.m */; };
@@ -68,13 +73,11 @@
 		84B7C12B2147D05000244ACA /* ApplicationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C12A2147D05000244ACA /* ApplicationData.m */; };
 		84B7C12E2147D17700244ACA /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C12D2147D17700244ACA /* Product.m */; };
 		84B7C1372147D45A00244ACA /* CatalogXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7C1362147D45A00244ACA /* CatalogXMLParser.m */; };
-		84D3635C215BD74800BD4127 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D3635B215BD74800BD4127 /* CollectionViewController.m */; };
 		B520D3EC22994321002070D6 /* UIPickerViewWithDataSourceProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = B520D3EB22994321002070D6 /* UIPickerViewWithDataSourceProperty.m */; };
 		B520D3EF22996821002070D6 /* DeliveryTimeCertain.m in Sources */ = {isa = PBXBuildFile; fileRef = B520D3EE22996821002070D6 /* DeliveryTimeCertain.m */; };
 		B537C2B72296C5F0004D33A7 /* favoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B537C2B62296C5F0004D33A7 /* favoritesViewController.m */; };
 		B537C2BB2296D3A8004D33A7 /* FavoritesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B537C2B92296D3A8004D33A7 /* FavoritesTableViewCell.m */; };
 		B537C2BC2296D3A8004D33A7 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B537C2BA2296D3A8004D33A7 /* FavoritesTableViewCell.xib */; };
-		CE22B1A0220AF9D30020C55A /* IphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22B19F220AF9D30020C55A /* IphoneViewController.m */; };
 		CE22B1B7220BE5CE0020C55A /* SaleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22B1B6220BE5CE0020C55A /* SaleViewController.m */; };
 		CE22B1BA220C15A80020C55A /* CheckoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE22B1B9220C15A80020C55A /* CheckoutViewController.m */; };
 		CE5EDAA8229DBE30005168A7 /* GNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5EDAA7229DBE30005168A7 /* GNViewController.m */; };
@@ -89,7 +92,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		113A5D2322E9A5950032DB3D /* nevkusno-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nevkusno-Bridging-Header.h"; sourceTree = "<group>"; };
+		0E88AFA7676B362EFAECF71D /* Pods-nevkusno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.debug.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.debug.xcconfig"; sourceTree = "<group>"; };
+		1106C6B0230458FA00B39CEB /* UserMenuTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMenuTableViewController.h; sourceTree = "<group>"; };
+		1106C6B1230458FA00B39CEB /* UserMenuTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserMenuTableViewController.m; sourceTree = "<group>"; };
+		110DE50C22EF04A1005BDE03 /* VMOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMOrder.h; sourceTree = "<group>"; };
+		110DE50D22EF04A1005BDE03 /* VMOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMOrder.m; sourceTree = "<group>"; };
+		110DE50F22EF1463005BDE03 /* VMOrderTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMOrderTableViewController.h; sourceTree = "<group>"; };
+		110DE51022EF1463005BDE03 /* VMOrderTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMOrderTableViewController.m; sourceTree = "<group>"; };
+		11345DF522EDC8D60038B6A5 /* VMCreateOrderObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMCreateOrderObject.h; sourceTree = "<group>"; };
+		11345DF622EDC8D60038B6A5 /* VMCreateOrderObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMCreateOrderObject.m; sourceTree = "<group>"; };
 		113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensionWrapper.swift; sourceTree = "<group>"; };
 		113A5D2A22E9B74C0032DB3D /* PickPointApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickPointApi.h; sourceTree = "<group>"; };
 		113A5D2B22E9B74C0032DB3D /* PickPointApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickPointApi.m; sourceTree = "<group>"; };
@@ -97,6 +108,8 @@
 		113A5D2E22E9C7000032DB3D /* PickPointCity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickPointCity.m; sourceTree = "<group>"; };
 		113A5D3122E9DEBF0032DB3D /* CityTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
 		113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		113C40E822EAFB8800403FB6 /* VMDeliveryMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMDeliveryMethod.h; sourceTree = "<group>"; };
+		113C40E922EAFB8800403FB6 /* VMDeliveryMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMDeliveryMethod.m; sourceTree = "<group>"; };
 		113E1F3922D5E98800026EF7 /* api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
 		1163650422A902360065D5EC /* DetailTextDeliveryVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTextDeliveryVCViewController.h; sourceTree = "<group>"; };
 		1163650522A902360065D5EC /* DetailTextDeliveryVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTextDeliveryVCViewController.m; sourceTree = "<group>"; };
@@ -117,6 +130,10 @@
 		1180A2BC22D87A5E0076CFE7 /* UIStoryboardSegueToItself.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIStoryboardSegueToItself.h; sourceTree = "<group>"; };
 		1180A2BD22D87A5E0076CFE7 /* UIStoryboardSegueToItself.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIStoryboardSegueToItself.m; sourceTree = "<group>"; };
 		11A8A37F22D61436000FA533 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11BE790D22EDB053004D3275 /* UIPickerVilewWithTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPickerVilewWithTextField.h; sourceTree = "<group>"; };
+		11BE790E22EDB053004D3275 /* UIPickerVilewWithTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPickerVilewWithTextField.m; sourceTree = "<group>"; };
+		11BE791022EDBB69004D3275 /* VMPriceRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VMPriceRange.h; sourceTree = "<group>"; };
+		11BE791122EDBB69004D3275 /* VMPriceRange.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VMPriceRange.m; sourceTree = "<group>"; };
 		11D6BB3022A9182500241D36 /* DeliveryRussiaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryRussiaViewController.h; sourceTree = "<group>"; };
 		11D6BB3122A9182500241D36 /* DeliveryRussiaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryRussiaViewController.m; sourceTree = "<group>"; };
 		11D6BB3322A9273D00241D36 /* DeliveryPickupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryPickupViewController.h; sourceTree = "<group>"; };
@@ -137,20 +154,15 @@
 		11FDDC1022E832330056D0BC /* FooterCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FooterCollectionReusableView.h; sourceTree = "<group>"; };
 		11FDDC1122E832330056D0BC /* FooterCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FooterCollectionReusableView.m; sourceTree = "<group>"; };
 		11FDDC1222E832330056D0BC /* FooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterCollectionReusableView.xib; sourceTree = "<group>"; };
-		22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.debug.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.debug.xcconfig"; sourceTree = "<group>"; };
-		360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Приложение для кондитера.release.xcconfig"; path = "Target Support Files/Pods-Приложение для кондитера/Pods-Приложение для кондитера.release.xcconfig"; sourceTree = "<group>"; };
-		6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.release.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.release.xcconfig"; sourceTree = "<group>"; };
 		782BE617229FD98800396518 /* GNTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNTableViewCell.h; sourceTree = "<group>"; };
 		782BE618229FD98800396518 /* GNTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNTableViewCell.m; sourceTree = "<group>"; };
 		782BE619229FD98800396518 /* GNTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GNTableViewCell.xib; sourceTree = "<group>"; };
 		7838E78721D318E700AC8F4A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7838E78821D318E700AC8F4A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7838E78A21D31AD300AC8F4A /* twoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = twoViewController.h; sourceTree = "<group>"; };
-		7838E78B21D31AD300AC8F4A /* twoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = twoViewController.m; sourceTree = "<group>"; };
 		784243102293F5DA00E51621 /* PickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		784243112293F5DA00E51621 /* PickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
-		786465E121D3421D004C96BF /* VMPoductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMPoductViewController.m; sourceTree = "<group>"; };
-		786465E221D3421D004C96BF /* VMPoductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMPoductViewController.h; sourceTree = "<group>"; };
+		786465E121D3421D004C96BF /* VMProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMProductViewController.m; sourceTree = "<group>"; };
+		786465E221D3421D004C96BF /* VMProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMProductViewController.h; sourceTree = "<group>"; };
 		78A4A1A322981F2400FD21F5 /* DeliveryMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryMethod.h; sourceTree = "<group>"; };
 		78A4A1A422981F2400FD21F5 /* DeliveryMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryMethod.m; sourceTree = "<group>"; };
 		78A4A1A62298203B00FD21F5 /* deliveryMethods.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = deliveryMethods.xml; sourceTree = SOURCE_ROOT; };
@@ -177,8 +189,6 @@
 		848A3B92214BBE4C00CB6648 /* VMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMCategory.h; sourceTree = "<group>"; };
 		848A3B94214BBF5E00CB6648 /* ApplicationData2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationData2.h; sourceTree = "<group>"; };
 		848A3B95214BBF5F00CB6648 /* ApplicationData2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationData2.m; sourceTree = "<group>"; };
-		848A3B97214BC1E700CB6648 /* ThirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirstViewController.m; sourceTree = "<group>"; };
-		848A3B98214BC1E700CB6648 /* ThirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirstViewController.h; sourceTree = "<group>"; };
 		84B03F06214AD3020040CAF7 /* InventoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InventoryViewController.h; sourceTree = "<group>"; };
 		84B03F07214AD3020040CAF7 /* InventoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InventoryViewController.m; sourceTree = "<group>"; };
 		84B7C10D2147CA8900244ACA /* nevkusno.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nevkusno.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,9 +209,8 @@
 		84B7C12D2147D17700244ACA /* Product.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		84B7C1352147D45A00244ACA /* CatalogXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogXMLParser.h; sourceTree = "<group>"; };
 		84B7C1362147D45A00244ACA /* CatalogXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogXMLParser.m; sourceTree = "<group>"; };
-		84D3635A215BD74700BD4127 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		84D3635B215BD74800BD4127 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
-		AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nevkusno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		870F464A30C20656DEF0DB3F /* Pods_nevkusno.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nevkusno.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		899AB089322574ADDCC48D0F /* Pods-nevkusno.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.release.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.release.xcconfig"; sourceTree = "<group>"; };
 		B520D3EA22994321002070D6 /* UIPickerViewWithDataSourceProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPickerViewWithDataSourceProperty.h; sourceTree = "<group>"; };
 		B520D3EB22994321002070D6 /* UIPickerViewWithDataSourceProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPickerViewWithDataSourceProperty.m; sourceTree = "<group>"; };
 		B520D3ED22996821002070D6 /* DeliveryTimeCertain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryTimeCertain.h; sourceTree = "<group>"; };
@@ -211,8 +220,6 @@
 		B537C2B82296D3A8004D33A7 /* FavoritesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewCell.h; sourceTree = "<group>"; };
 		B537C2B92296D3A8004D33A7 /* FavoritesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewCell.m; sourceTree = "<group>"; };
 		B537C2BA2296D3A8004D33A7 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableViewCell.xib; sourceTree = "<group>"; };
-		CE22B19E220AF9D30020C55A /* IphoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IphoneViewController.h; sourceTree = "<group>"; };
-		CE22B19F220AF9D30020C55A /* IphoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IphoneViewController.m; sourceTree = "<group>"; };
 		CE22B1B5220BE5CE0020C55A /* SaleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaleViewController.h; sourceTree = "<group>"; };
 		CE22B1B6220BE5CE0020C55A /* SaleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaleViewController.m; sourceTree = "<group>"; };
 		CE22B1B8220C15A80020C55A /* CheckoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckoutViewController.h; sourceTree = "<group>"; };
@@ -234,8 +241,6 @@
 		CEE5425A222B2F3F00896637 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		CEE5425B222B2F3F00896637 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		CEE5425C222B2F3F00896637 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nevkusno.debug.xcconfig"; path = "Target Support Files/Pods-nevkusno/Pods-nevkusno.debug.xcconfig"; sourceTree = "<group>"; };
-		F3023C5E6174964AA3C9CA41 /* Pods_________________________.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_________________________.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +255,7 @@
 				1163650B22A90B800065D5EC /* WebKit.framework in Frameworks */,
 				78A4A1B222984B1C00FD21F5 /* libz.tbd in Frameworks */,
 				78A4A1B022984B1000FD21F5 /* libxml2.tbd in Frameworks */,
-				7275D3CEAA782654E0C8F17A /* Pods_nevkusno.framework in Frameworks */,
+				1620399A884B73DFB36B81F6 /* Pods_nevkusno.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,10 +265,8 @@
 		0D76F79FD5FE2F3218CCF4AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				22ADB65D8E3E9EBBF3C88FDC /* Pods-Приложение для кондитера.debug.xcconfig */,
-				360068638DBB525BCB6ABA0A /* Pods-Приложение для кондитера.release.xcconfig */,
-				DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */,
-				6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */,
+				0E88AFA7676B362EFAECF71D /* Pods-nevkusno.debug.xcconfig */,
+				899AB089322574ADDCC48D0F /* Pods-nevkusno.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -272,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				113A5D2422E9A5960032DB3D /* UIKitExtensionWrapper.swift */,
-				113A5D2322E9A5950032DB3D /* nevkusno-Bridging-Header.h */,
 			);
 			path = SwiftWrappers;
 			sourceTree = "<group>";
@@ -294,8 +296,25 @@
 			children = (
 				113A5D3122E9DEBF0032DB3D /* CityTableViewController.h */,
 				113A5D3222E9DEBF0032DB3D /* CityTableViewController.m */,
+				1106C6B0230458FA00B39CEB /* UserMenuTableViewController.h */,
+				1106C6B1230458FA00B39CEB /* UserMenuTableViewController.m */,
 			);
 			path = ViewContollers;
+			sourceTree = "<group>";
+		};
+		113C40E722EAFB5F00403FB6 /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				113C40E822EAFB8800403FB6 /* VMDeliveryMethod.h */,
+				11BE791022EDBB69004D3275 /* VMPriceRange.h */,
+				11BE791122EDBB69004D3275 /* VMPriceRange.m */,
+				113C40E922EAFB8800403FB6 /* VMDeliveryMethod.m */,
+				11345DF522EDC8D60038B6A5 /* VMCreateOrderObject.h */,
+				11345DF622EDC8D60038B6A5 /* VMCreateOrderObject.m */,
+				110DE50C22EF04A1005BDE03 /* VMOrder.h */,
+				110DE50D22EF04A1005BDE03 /* VMOrder.m */,
+			);
+			path = dto;
 			sourceTree = "<group>";
 		};
 		1180A2BB22D87A200076CFE7 /* Segues */ = {
@@ -310,9 +329,27 @@
 		11898BDB22D5F59A00A0CF37 /* MarketApi */ = {
 			isa = PBXGroup;
 			children = (
+				113C40E722EAFB5F00403FB6 /* dto */,
 				113E1F3922D5E98800026EF7 /* api.m */,
 			);
 			path = MarketApi;
+			sourceTree = "<group>";
+		};
+		11A3F31E233945C600003AA4 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				11BE790C22EDB016004D3275 /* UIClassHelpers */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		11BE790C22EDB016004D3275 /* UIClassHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				11BE790D22EDB053004D3275 /* UIPickerVilewWithTextField.h */,
+				11BE790E22EDB053004D3275 /* UIPickerVilewWithTextField.m */,
+			);
+			path = UIClassHelpers;
 			sourceTree = "<group>";
 		};
 		11FDDC0F22E831CD0056D0BC /* ReusableCollectionViewCells */ = {
@@ -336,8 +373,7 @@
 				1163650A22A90B800065D5EC /* WebKit.framework */,
 				78A4A1B122984B1C00FD21F5 /* libz.tbd */,
 				78A4A1AF22984B1000FD21F5 /* libxml2.tbd */,
-				F3023C5E6174964AA3C9CA41 /* Pods_________________________.framework */,
-				AEA8834BC594B71525E1E78F /* Pods_nevkusno.framework */,
+				870F464A30C20656DEF0DB3F /* Pods_nevkusno.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,11 +381,14 @@
 		84B7C1042147CA8900244ACA = {
 			isa = PBXGroup;
 			children = (
+				11A3F31E233945C600003AA4 /* helpers */,
 				113A5D3022E9DE910032DB3D /* ViewContollers */,
 				113A5D2622E9B6620032DB3D /* PickPointApi */,
 				113A5D2222E9A5640032DB3D /* SwiftWrappers */,
-				11FDDC0C22E731220056D0BC /* VMLocationManager.h */,
 				11FDDC0F22E831CD0056D0BC /* ReusableCollectionViewCells */,
+				110DE50F22EF1463005BDE03 /* VMOrderTableViewController.h */,
+				110DE51022EF1463005BDE03 /* VMOrderTableViewController.m */,
+				11FDDC0C22E731220056D0BC /* VMLocationManager.h */,
 				11FDDC0D22E731220056D0BC /* VMLocationManager.m */,
 				11FDDC0922E730210056D0BC /* DeliveryMapViewController.h */,
 				11FDDC0A22E730210056D0BC /* DeliveryMapViewController.m */,
@@ -408,8 +447,6 @@
 				CE22B1B9220C15A80020C55A /* CheckoutViewController.m */,
 				CE22B1B5220BE5CE0020C55A /* SaleViewController.h */,
 				CE22B1B6220BE5CE0020C55A /* SaleViewController.m */,
-				CE22B19E220AF9D30020C55A /* IphoneViewController.h */,
-				CE22B19F220AF9D30020C55A /* IphoneViewController.m */,
 				CEE0C4372200309C005C96EA /* buttontocart.h */,
 				CEE0C4382200309C005C96EA /* buttontocart.m */,
 				CE9AD76E220A2AC2003C1499 /* ShoppingCartBtn.h */,
@@ -464,16 +501,10 @@
 				1180A2B822D8761C0076CFE7 /* Section.m */,
 				848A3B94214BBF5E00CB6648 /* ApplicationData2.h */,
 				848A3B95214BBF5F00CB6648 /* ApplicationData2.m */,
-				848A3B98214BC1E700CB6648 /* ThirstViewController.h */,
-				848A3B97214BC1E700CB6648 /* ThirstViewController.m */,
-				84D3635A215BD74700BD4127 /* CollectionViewController.h */,
-				84D3635B215BD74800BD4127 /* CollectionViewController.m */,
 				7838E78721D318E700AC8F4A /* ViewController.h */,
 				7838E78821D318E700AC8F4A /* ViewController.m */,
-				786465E221D3421D004C96BF /* VMPoductViewController.h */,
-				786465E121D3421D004C96BF /* VMPoductViewController.m */,
-				7838E78A21D31AD300AC8F4A /* twoViewController.h */,
-				7838E78B21D31AD300AC8F4A /* twoViewController.m */,
+				786465E221D3421D004C96BF /* VMProductViewController.h */,
+				786465E121D3421D004C96BF /* VMProductViewController.m */,
 				78A4A1A322981F2400FD21F5 /* DeliveryMethod.h */,
 				78A4A1A422981F2400FD21F5 /* DeliveryMethod.m */,
 				78A4A1A8229821FA00FD21F5 /* DeliveryMethodXMLParser.h */,
@@ -506,11 +537,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B7C1262147CA8A00244ACA /* Build configuration list for PBXNativeTarget "nevkusno" */;
 			buildPhases = (
-				EEA1BF680542FC13D702D54E /* [CP] Check Pods Manifest.lock */,
+				8612145B646C22196F84E5C0 /* [CP] Check Pods Manifest.lock */,
 				84B7C1092147CA8900244ACA /* Sources */,
 				84B7C10A2147CA8900244ACA /* Frameworks */,
 				84B7C10B2147CA8900244ACA /* Resources */,
-				3F67C41D5F2B93E0CBF4BDE4 /* [CP] Embed Pods Frameworks */,
+				61910F3EA58C2608BFFE5382 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -583,7 +614,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3F67C41D5F2B93E0CBF4BDE4 /* [CP] Embed Pods Frameworks */ = {
+		61910F3EA58C2608BFFE5382 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -600,7 +631,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nevkusno/Pods-nevkusno-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EEA1BF680542FC13D702D54E /* [CP] Check Pods Manifest.lock */ = {
+		8612145B646C22196F84E5C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -632,11 +663,13 @@
 				84B7C1182147CA8900244ACA /* SecondViewController.m in Sources */,
 				1180A2B722D8543F0076CFE7 /* MainPageViewController.m in Sources */,
 				CE22B1BA220C15A80020C55A /* CheckoutViewController.m in Sources */,
+				110DE50E22EF04A1005BDE03 /* VMOrder.m in Sources */,
+				11345DF722EDC8D60038B6A5 /* VMCreateOrderObject.m in Sources */,
+				11BE790F22EDB053004D3275 /* UIPickerVilewWithTextField.m in Sources */,
 				CE6CBF98229B036900CDE11F /* EndViewController.m in Sources */,
 				CE80ADD92235218200C261D4 /* UIButtonlike.m in Sources */,
 				CE80ADD622350DA900C261D4 /* LoginViewController.m in Sources */,
 				11D6BB3222A9182500241D36 /* DeliveryRussiaViewController.m in Sources */,
-				7838E78C21D31AD300AC8F4A /* twoViewController.m in Sources */,
 				CE9AD770220A2AC2003C1499 /* ShoppingCartBtn.m in Sources */,
 				848A3B90214BBA6900CB6648 /* CategoryXMLParser.m in Sources */,
 				84B7C12B2147D05000244ACA /* ApplicationData.m in Sources */,
@@ -657,10 +690,9 @@
 				11FD94C322DC7090003353E8 /* PromotionWebViewViewController.m in Sources */,
 				B520D3EF22996821002070D6 /* DeliveryTimeCertain.m in Sources */,
 				B520D3EC22994321002070D6 /* UIPickerViewWithDataSourceProperty.m in Sources */,
-				786465E321D3421D004C96BF /* VMPoductViewController.m in Sources */,
+				786465E321D3421D004C96BF /* VMProductViewController.m in Sources */,
 				11FD94C022DC53EC003353E8 /* ReviewsViewController.m in Sources */,
 				84B7C1232147CA8A00244ACA /* main.m in Sources */,
-				848A3B99214BC1E800CB6648 /* ThirstViewController.m in Sources */,
 				848A3B93214BBE4C00CB6648 /* VMCategory.m in Sources */,
 				11FDDC0E22E731220056D0BC /* VMLocationManager.m in Sources */,
 				78A64953229BF811003179F8 /* DSSCollectionViewFlowLayout.m in Sources */,
@@ -669,25 +701,27 @@
 				784243122293F5DA00E51621 /* PickerView.m in Sources */,
 				11D6BB3522A9273D00241D36 /* DeliveryPickupViewController.m in Sources */,
 				84B03F08214AD3020040CAF7 /* InventoryViewController.m in Sources */,
+				110DE51122EF1463005BDE03 /* VMOrderTableViewController.m in Sources */,
 				11FD94C622DDCF05003353E8 /* UserSettingsViewController.m in Sources */,
 				78A4A1AA229821FA00FD21F5 /* DeliveryMethodXMLParser.m in Sources */,
 				113A5D2522E9A5960032DB3D /* UIKitExtensionWrapper.swift in Sources */,
 				113A5D2C22E9B74C0032DB3D /* PickPointApi.m in Sources */,
 				1180A2BE22D87A5E0076CFE7 /* UIStoryboardSegueToItself.m in Sources */,
-				84D3635C215BD74800BD4127 /* CollectionViewController.m in Sources */,
 				113A5D3322E9DEBF0032DB3D /* CityTableViewController.m in Sources */,
 				113A5D2F22E9C7000032DB3D /* PickPointCity.m in Sources */,
+				113C40EA22EAFB8800403FB6 /* VMDeliveryMethod.m in Sources */,
 				1180A2A822D73B540076CFE7 /* UserLoginViewController.m in Sources */,
 				CE22B1B7220BE5CE0020C55A /* SaleViewController.m in Sources */,
 				B537C2B72296C5F0004D33A7 /* favoritesViewController.m in Sources */,
+				11BE791222EDBB69004D3275 /* VMPriceRange.m in Sources */,
 				11FDDC1322E832340056D0BC /* FooterCollectionReusableView.m in Sources */,
 				1180A2BA22D8761C0076CFE7 /* Section.m in Sources */,
 				78A4A1A522981F2400FD21F5 /* DeliveryMethod.m in Sources */,
+				1106C6B2230458FA00B39CEB /* UserMenuTableViewController.m in Sources */,
 				84B7C1372147D45A00244ACA /* CatalogXMLParser.m in Sources */,
 				84B7C1152147CA8900244ACA /* FirstViewController.m in Sources */,
 				1163650622A902360065D5EC /* DetailTextDeliveryVCViewController.m in Sources */,
 				8448E5192147E1B200147DBC /* DetailsViewController.m in Sources */,
-				CE22B1A0220AF9D30020C55A /* IphoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,8 +859,9 @@
 		};
 		84B7C1272147CA8A00244ACA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD23F34A72792DE840AFE875 /* Pods-nevkusno.debug.xcconfig */;
+			baseConfigurationReference = 0E88AFA7676B362EFAECF71D /* Pods-nevkusno.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -844,7 +879,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nevkusno.ru.catalog-app-for-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWrappers/nevkusno-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -853,8 +889,9 @@
 		};
 		84B7C1282147CA8A00244ACA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6854AFE61F07AC84DDB9E1A6 /* Pods-nevkusno.release.xcconfig */;
+			baseConfigurationReference = 899AB089322574ADDCC48D0F /* Pods-nevkusno.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -872,7 +909,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nevkusno.ru.catalog-app-for-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWrappers/nevkusno-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

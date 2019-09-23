@@ -44,7 +44,7 @@
     dispatch_group_t group =dispatch_group_create();
     dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{
-        [ApplicationData login:login withPassword:password
+        [ApplicationData login:login withPassword:password asNewUser:NO
                      onSuccess:^(NSDictionary* data)  {
                         //new code
                          dispatch_group_leave(group);
@@ -61,21 +61,18 @@
             NSLog(@"All done");
             [self performSegueWithIdentifier:@"toStartPage" sender:sender];
             [self removeSpinner];
+            [self.loginText resignFirstResponder];
+            [self.passwordText resignFirstResponder];
             return;
         }
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:self.message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                                  [self removeSpinner];
-                                                              }];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault                                                              handler:^(UIAlertAction * action) {                                                                  [self removeSpinner];
+            }];
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
         
     });
-    
-    
-    
-    
+  
     
 }
 
@@ -86,11 +83,9 @@
     dispatch_group_t group =dispatch_group_create();
     dispatch_group_enter(group);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{});
-    [ApplicationData registr:login withPassword:password
+    [ApplicationData login:login withPassword:password asNewUser:YES
                  onSuccess:^(NSDictionary* data)  {
                      dispatch_group_leave(group);
-                     
-                     
                  }
                  onFailure:^(NSString* message){
                      self.message = message;
@@ -114,6 +109,43 @@
         
     });
     
+}
+- (void)viewDidAppear:(BOOL)animated{
+    if ([ApplicationData isAuthedUser]) {
+        dispatch_group_t group =dispatch_group_create();
+        dispatch_group_enter(group);
+        BOOL __block success = NO;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{});
+        [ApplicationData loadUserDataOnSuccess:^(NSDictionary *data) {
+             dispatch_group_leave(group);
+            success =YES;
+        } onFailure:^(NSString *message) {
+            self.message = message;
+            dispatch_group_leave(group);
+        }
+         ];
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            if (success) {
+                NSLog(@"All done");
+                [self performSegueWithIdentifier:@"toStartPage" sender:self];
+                [self removeSpinner];
+                return;
+            }
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:@""
+                                        message:self.message
+                                        preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction
+                                            actionWithTitle:@"OK"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                [self removeSpinner];
+                                            }];
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        });
+    }
 }
 
 @end

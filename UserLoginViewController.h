@@ -6,11 +6,11 @@
 //  Copyright © 2019 Admin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UserLoginViewController : ViewController
+@interface UserLoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *loginText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 @property (retain, nonatomic)  NSString *message;

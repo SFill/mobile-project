@@ -20,25 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self showSpinner:self.view];
-    dispatch_group_t group =dispatch_group_create();
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{
-        [ApplicationData getFavorItems:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
-            self.favorites = [[NSMutableArray alloc] init]; // todo добавить избранное в единый стораж
-            [self.favorites addObjectsFromArray:[ApplicationData getProductsFromDict:data]];
-             dispatch_group_leave(group);
-        } onFailure:^(NSString *message) {
-            dispatch_group_leave(group);
-        }];
-    });
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        [self removeSpinner];
-        
-    });
-   // [self.tableView reloadData];
-    // Do any additional setup after loading the view.
+    self.favorites = [ApplicationData getFavorites];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

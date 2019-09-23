@@ -13,6 +13,8 @@
 @interface EndViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *returnbutton;
+@property (weak, nonatomic) IBOutlet UITextView *textField;
+@property (weak, nonatomic) NSString *text;
 
 @end
 

@@ -19,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="422" height="368.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HP4-b0-mhz">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HP4-b0-mhz">
                         <rect key="frame" x="10" y="142" width="366" height="226"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4VI-Wt-1ex">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4VI-Wt-1ex">
                         <rect key="frame" x="10" y="49" width="366" height="56"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,7 +40,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zje-3D-MaY">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="qweqweqwe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zje-3D-MaY">
                         <rect key="frame" x="10" y="11" width="366" height="45"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

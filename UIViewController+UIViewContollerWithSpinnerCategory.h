@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 }
 - (void) showSpinner:(UIView*)view;
 - (void)removeSpinner;
-@property (weak,atomic) UIView *vSpinner;
 @end
 
 NS_ASSUME_NONNULL_END

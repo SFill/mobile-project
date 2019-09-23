@@ -17,13 +17,16 @@
 
 @property(strong, nonatomic) IBOutlet UIScrollView *scroll;
 @property (strong, nonatomic) IBOutlet UICollectionView *Collection_view;
-@property (strong, nonatomic) IBOutlet VMCategory *selectedCategory;
-@property (strong, nonatomic) IBOutlet NSMutableArray *categories;
-@property (strong, nonatomic) IBOutlet NSMutableArray *products;
+@property (strong, nonatomic) VMCategory *selectedCategory;
+@property (strong, nonatomic) NSMutableArray *categories;
+@property (strong, nonatomic) NSMutableArray *products;
+@property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (strong, nonatomic) IBOutlet UICollectionView *сollection_view;
-@property (strong, atomic) IBOutlet NSMutableArray *dataTransferArray;
+@property (strong, atomic)  NSMutableArray *dataTransferArray;
 @property (strong, atomic)  NSNumber *pages;
 @property (strong, atomic)  NSNumber *pagesLastProducts;
 @property (strong, atomic)  NSMutableArray *lastProducts;
+@property  NSMutableArray *filteredCategories;
+@property  NSString *searchText;
 
 @end

@@ -17,7 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _returnbutton.layer.cornerRadius =10;
+    self.textField.text = self.text;
     // Do any additional setup after loading the view.
+}
+- (IBAction)returnToMainScreen:(id)sender {
+   [self dismissViewControllerAnimated:YES completion:nil];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -9,20 +9,20 @@
 #import "MainPageViewController.h"
 #import "ApplicationData.h"
 #import "DetailsViewController.h"
-#import "twoViewController.h"
 #import "TableViewCell.h"
 #import "UIViewController+UIViewContollerWithSpinnerCategory.h"
 #import "catalog-app/Section.h"
 #import "CollectiongroupViewController.h"
-#import "catalog-app/VMPoductViewController.h"
+#import "catalog-app/VMProductViewController.h"
+#import <SDWebImage/SDWebImage.h>
 
-@interface MainPageViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate>{
+@interface MainPageViewController()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate>{
     NSMutableArray *myObject;
     
     BOOL isFiltered;
     int i;
 }
-
+@property VMCategory *selectedCategory;
 @property NSArray *image_Arr;
 @property NSArray *label_Arr;
 @property NSArray *price_Arr;
@@ -44,14 +44,15 @@
     _price_Arr = [[NSMutableArray alloc]initWithObjects:@"1 100 ₽",@"2 000 ₽",@"70 ₽",@"1 260 ₽",@"1 100 ₽",@"2 000 ₽",@"2 000 ₽",@"2 000 ₽", nil];
     
     UIImage *image1 = [UIImage imageNamed:@"баннер вкусный 2 копия.jpg"];
-    UIImage *image2 = [UIImage imageNamed:@"баннер вкусный 2.jpg"];
-    UIImage *image3 = [UIImage imageNamed:@"баннер вкусный 3.jpg"];
-    NSArray *images = [[NSArray alloc] initWithObjects:image1,image2,image3,nil];
-    
-    imgView.animationImages = images;
-    imgView.animationDuration = 5;
-    imgView.animationRepeatCount = 0;
-    [imgView startAnimating];
+    imgView.image = image1;
+//    UIImage *image2 = [UIImage imageNamed:@"баннер вкусный 2.jpg"];
+//    UIImage *image3 = [UIImage imageNamed:@"баннер вкусный 3.jpg"];
+    //NSArray *images = [[NSArray alloc] initWithObjects:image1,image2,image3,nil];
+    imgView.image = image1;
+//    imgView.animationImages = images;
+//    imgView.animationDuration = 5;
+//    imgView.animationRepeatCount = 0;
+//    [imgView startAnimating];
     _tableViewSearch.delegate = self;
     _tableViewSearch.dataSource = self;
     _tableViewSearch.hidden = true;
@@ -97,8 +98,6 @@
     _shadowbutton6.layer.shadowOpacity = 1.0f;
     
     
-    
-    
     // search bar setup
     
     isFiltered = NO;
@@ -113,95 +112,137 @@
     //dispatch_queue_t queue = dispatch_queue_create("com.app", DISPATCH_QUEUE_CONCURRENT);
     
 //    [ApplicationData setQueueForManager:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0)];
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
-        [self requestTopProducts:group];
-        // need dispatch leave call
-    });
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
-        [self requestLastProducts:group];
-        // need dispatch leave call
-    });
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
-        [self requestCatalog:group];
-        // need dispatch leave call
-    });
+    [self requestTopProducts:group];
+    [self requestLastProducts:group];
+    [self requestWholeSaleProducts:group];
+    [self requestCatalog:group];
+
+
+    
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         
         NSLog(@"All done");
-       // [ApplicationData defaultQueueForManager];
         [self.topProductsCollectionView reloadData];
         [self.lastProductsCollectionView reloadData];
         [self removeSpinner];
     });
+ 
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshContent:) forControlEvents:UIControlEventValueChanged];
+    [self.scroll addSubview:refreshControl];
     
 }
 
 
+- (void)refreshContent:(UIRefreshControl *)refreshControl{
+    dispatch_group_t group = dispatch_group_create();
+    [self requestTopProducts:group];
+    [self requestLastProducts:group];
+    [self requestWholeSaleProducts:group];
+    [self requestCatalog:group];
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        NSLog(@"content was updated");
+        [self.topProductsCollectionView reloadData];
+        [self.lastProductsCollectionView reloadData];
+        [refreshControl endRefreshing];
+    });
+}
+
+-(void) requestWholeSaleProducts:(dispatch_group_t) group{
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
+        [ApplicationData getWholeSaleItemsWithPageNum:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
+            NSNumber *pages = [[data objectForKey:@"RESULT"] objectForKey:@"PAGES"];
+            if (pages) {
+                self.pagesWholeSaleProducts = pages;
+            }
+            self.wholeSaleProducts = [ApplicationData getProductsFromDict:data];
+            dispatch_group_leave(group);
+        } onFailure:^(NSString *message) {
+            NSLog(@"wholesale fetching was failed");
+            dispatch_group_leave(group);
+        }];
+    });
+    
+    
+    
+}
 
 -(void) requestTopProducts:(dispatch_group_t) group{
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
+        [ApplicationData getTopItems:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
+            NSNumber *pages = [[data objectForKey:@"RESULT"] objectForKey:@"PAGES"];
+            if (pages) {
+                self.pagesTopProducts = pages;
+            }
+            self.topProducts = [ApplicationData getProductsFromDict:data];
+            dispatch_group_leave(group);
+        } onFailure:^(NSString *message) {
+            NSLog(@"");
+            dispatch_group_leave(group);
+        }];
+    });
     
-    [ApplicationData getTopItems:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
-        NSNumber *pages = [[data objectForKey:@"RESULT"] objectForKey:@"PAGES"];
-        if (pages) {
-            self.pagesTopProducts = pages;
-        }
-        self.topProducts = [ApplicationData getProductsFromDict:data];
-        dispatch_group_leave(group);
-    } onFailure:^(NSString *message) {
-        NSLog(@"");
-        dispatch_group_leave(group);
-    }];
     
     
 }
 -(void) requestLastProducts:(dispatch_group_t) group{
-    [ApplicationData getLastItemsForCurrentMonthWithID:@-1 withPageNum:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
-        NSNumber *pages = [[data objectForKey:@"RESULT"] objectForKey:@"PAGES"];
-        if (pages) {
-            self.pagesLastProducts = pages;
-        }
-        self.lastProducts = [ApplicationData getProductsFromDict:data];
-        dispatch_group_leave(group);
-        
-    } onFailure:^(NSString *message) {
-        NSLog(@"");
-         dispatch_group_leave(group);
-    }];
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
+        [ApplicationData getLastItemsForCurrentMonthWithID:@-1 withPageNum:@1 inPage:@50 OnSuccess:^(NSDictionary *data) {
+            NSNumber *pages = [[data objectForKey:@"RESULT"] objectForKey:@"PAGES"];
+            if (pages) {
+                self.pagesLastProducts = pages;
+            }
+            self.lastProducts = [ApplicationData getProductsFromDict:data];
+            dispatch_group_leave(group);
+            
+        } onFailure:^(NSString *message) {
+            NSLog(@"");
+            dispatch_group_leave(group);
+        }];
+        // need dispatch leave call
+    });
+    
 }
 
 -(void) requestCatalog:(dispatch_group_t) group{
-    self.buttonTagDict = [[NSMutableDictionary alloc] init];
-    [ApplicationData getInitialCatalogSectionsOnSuccess:^(NSDictionary *data) {
-        if ([data objectForKey:@"RESULT"] == nil) {
-            return;
-        }
-        NSArray *sections = [[data objectForKey:@"RESULT"] objectForKey:@"SECTIONS"];
-        for (NSDictionary *section in sections) {
-            VMCategory *category = [[VMCategory alloc] init];
-            category.parentID = [NSNumber numberWithInteger:[[section objectForKey:@"PARENT"] integerValue]];
-            category.ID = [NSNumber numberWithInteger:[[section objectForKey:@"ID"] integerValue]];
-            category.name = [section objectForKey:@"NAME"];
-            category.code = [section objectForKey:@"CODE"];
-            category.sectionDescription = [section objectForKey:@"DESCRIPTION"];
-            category.imgUrl =[section objectForKey:@"PICTURE"];
-            if ([category.code isEqualToString:@"lavka-kulinara"]) {
-                [[self buttonTagDict] setObject:category forKey:@"lavka-kulinara"];
+    dispatch_group_enter(group);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^(void){
+        self.buttonTagDict = [[NSMutableDictionary alloc] init];
+        [ApplicationData getInitialCatalogSectionsOnSuccess:^(NSDictionary *data) {
+            if ([data objectForKey:@"RESULT"] == nil) {
+                return;
             }
-            if ([category.code isEqualToString:@"konditerskiy-inventar"]) {
-                [[self buttonTagDict] setObject:category forKey:@"konditerskiy-inventar"];
+            NSArray *sections = [[data objectForKey:@"RESULT"] objectForKey:@"SECTIONS"];
+            for (NSDictionary *section in sections) {
+                VMCategory *category = [[VMCategory alloc] init];
+                category.parentID = [NSNumber numberWithInteger:[[section objectForKey:@"PARENT"] integerValue]];
+                category.ID = [NSNumber numberWithInteger:[[section objectForKey:@"ID"] integerValue]];
+                category.name = [section objectForKey:@"NAME"];
+                category.code = [section objectForKey:@"CODE"];
+                category.sectionDescription = [section objectForKey:@"DESCRIPTION"];
+                category.imgUrl =[section objectForKey:@"PICTURE"];
+                if ([category.code isEqualToString:@"lavka-kulinara"]) {
+                    [[self buttonTagDict] setObject:category forKey:@"lavka-kulinara"];
+                }
+                if ([category.code isEqualToString:@"konditerskiy-inventar"]) {
+                    [[self buttonTagDict] setObject:category forKey:@"konditerskiy-inventar"];
+                }
+                if ([category.code isEqualToString:@"wholesale"]) {
+                    [[self buttonTagDict] setObject:category forKey:@"wholesale"];
+                }
             }
-            if ([category.code isEqualToString:@"wholesale"]) {
-                [[self buttonTagDict] setObject:category forKey:@"wholesale"];
-            }
-        }
-         dispatch_group_leave(group);
-    } onFailure:^(NSString *message) {
-        //[self removeSpinner];
-         dispatch_group_leave(group);
-    }];
+            dispatch_group_leave(group);
+        } onFailure:^(NSString *message) {
+            //[self removeSpinner];
+            dispatch_group_leave(group);
+        }];
+    });
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -225,6 +266,7 @@
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     //[self removeSpinner];
     //[self showSpinner:self.tableViewSearch];
+    searchText = [[searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] lowercaseString];
     if (searchText.length ==0) {
         isFiltered = false;
         _tableViewSearch.hidden = true;
@@ -319,7 +361,12 @@
     UIImageView *image1 = (UIImageView *)[cell viewWithTag:1];
     UILabel *label1 = (UILabel *)[cell viewWithTag:2];
     UILabel *label2 = (UILabel *)[cell viewWithTag:3];
-    image1.image = p.previewImg;
+//    image1.image = p.previewImg;
+    [image1 sd_setImageWithURL:[NSURL URLWithString:p.previewImgStringURL]
+              placeholderImage:[UIImage imageNamed:@"iconkulinar.png"]
+     ];
+
+    
     label1.text = p.name;
     label2.text = [NSString stringWithFormat:@"%@ ₽",p.price];
     //    UIImageView *image1 = (UIImageView *)[cell viewWithTag:1];
@@ -383,20 +430,43 @@
 }
 
 -(IBAction)callPhone:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://89056111270"]];
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"+74959225055" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74959225055"] options:@{} completionHandler:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"+74956447572" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+74956447572"] options:@{} completionHandler:nil];
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Назад" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    // Present action sheet.
+    [self presentViewController:actionSheet animated:YES completion:nil];
+    
 }
 - (IBAction)lavkaClick:(id)sender {
     VMCategory *category = (VMCategory*)[[self buttonTagDict] objectForKey:@"lavka-kulinara"];
+    self.selectedCategory = category;
     [self segueCategories:category sender:sender];
     
 }
 - (IBAction)konditerClick:(id)sender {
     VMCategory *category = (VMCategory*)[[self buttonTagDict] objectForKey:@"konditerskiy-inventar"];
+    self.selectedCategory = category;
     [self segueCategories:category sender:sender];
 }
 
 - (IBAction)wholeClick:(id)sender {
     VMCategory *category = (VMCategory*)[[self buttonTagDict] objectForKey:@"wholesale"];
+    self.selectedCategory = category;
     [self segueCategories:category sender:sender];
 }
 
@@ -407,14 +477,16 @@
     if ([[segue identifier] isEqualToString:@"Categories"]){
         CollectiongroupViewController *vc = [segue destinationViewController];
         vc.categories = self.dataTransferArray;
-        vc.lastProducts = self.lastProducts; // сделать переименование
+        vc.lastProducts = self.lastProducts;
         vc.pagesLastProducts = self.pagesLastProducts;
+        vc.navigationItem.title = self.selectedCategory.name;
     }
     if ([[segue identifier] isEqualToString:@"topProducts"]){
-        VMPoductViewController *vc = [segue destinationViewController];
+        VMProductViewController *vc = [segue destinationViewController];
         vc.products = self.topProducts;
         vc.pages = self.pagesTopProducts;
         vc.pageNum = self.pageTopProducts;
+        vc.navigationItem.title =@"Лидеры продаж";
         vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
             
              [ApplicationData getTopItems:pageNum inPage:@50 OnSuccess:success onFailure:failure];
@@ -422,14 +494,26 @@
         };
         
     }
+    if ([[segue identifier] isEqualToString:@"wholeSaleProducts"]){
+        VMProductViewController *vc = [segue destinationViewController];
+        vc.products = self.wholeSaleProducts;
+        vc.pages = self.pagesWholeSaleProducts;
+        vc.pageNum = self.pageWholeSaleProducts;
+        vc.navigationItem.title =@"ОПТ";
+        vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
+            [ApplicationData getWholeSaleItemsWithPageNum:pageNum inPage:@50 OnSuccess:success onFailure:failure];
+        };
+        
+    }
     if ([[segue identifier] isEqualToString:@"lastProducts"]){
-        VMPoductViewController *vc = [segue destinationViewController];
+        VMProductViewController *vc = [segue destinationViewController];
         vc.products = self.lastProducts;
         vc.pages = self.pagesLastProducts;
         vc.pageNum = self.pageLastProducts;
         vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
             [ApplicationData getLastItemsForCurrentMonthWithID:@-1 withPageNum:pageNum inPage:@50 OnSuccess:success onFailure:failure];
         };
+        vc.navigationItem.title =@"Новые поступления";
     }
 }
 -(void) segueCategories:(VMCategory*) category sender: (id) sender{
@@ -456,6 +540,10 @@
                 [categrories addObject:category];
                 // category.active = [[section objectForKey:@"PARENT"] boolValue];
             }
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name"
+                                                                           ascending:YES];
+            
+            [categrories sortUsingDescriptors:@[sortDescriptor]];
             self.dataTransferArray = categrories;
             dispatch_group_leave(group);
         } onFailure:^(NSString *message) {

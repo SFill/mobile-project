@@ -25,6 +25,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     expandedRowIndex = -1;
     data = [NSMutableArray new];
     dataPrice = [NSMutableArray new];
@@ -228,10 +229,10 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

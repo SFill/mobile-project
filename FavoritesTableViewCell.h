@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIImageView *titleImg;
+@property (weak, nonatomic) IBOutlet UIButton *cartButton;
 
 
 @end

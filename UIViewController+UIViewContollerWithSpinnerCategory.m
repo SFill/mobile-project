@@ -23,14 +23,11 @@ static void *ResultKey;
         [onView addSubview:spinnerView];
     });
  objc_setAssociatedObject(self, &ResultKey, spinnerView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    //self.sView = spinnerView;
     
 }
 
 -(void) removeSpinner{
     dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.sView removeFromSuperview];
-//        self.sView = nil;
         UIView *spinnerView = (UIView*)objc_getAssociatedObject(self, &ResultKey);
         [spinnerView removeFromSuperview];
         spinnerView = nil;

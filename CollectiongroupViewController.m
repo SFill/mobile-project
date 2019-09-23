@@ -7,9 +7,8 @@
 //
 
 #import "CollectiongroupViewController.h"
-#import "twoViewController.h"
 #import "catalog-app/ApplicationData.h"
-#import "catalog-app/VMPoductViewController.h"
+#import "catalog-app/VMProductViewController.h"
 #import "UIViewController+UIViewContollerWithSpinnerCategory.h"
 #import "Segues/UIStoryboardSegueToItself.h"
 #import "catalog-app/DetailsViewController.h"
@@ -52,13 +51,18 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSArray* storage;
-    if (collectionView.tag ==11) {
+    if ([self.searchText length]!=0) {
+        storage = self.filteredCategories;
+    }else{
         storage = self.categories;
     }
+//    if (collectionView.tag ==11) {
+//        storage = self.categories;
+//    }
     
-    if (collectionView.tag ==10) {
-         storage = self.lastProducts;
-    }
+//    if (collectionView.tag ==10) {
+//         storage = self.lastProducts;
+//    }
     return [storage count];
 }
 
@@ -66,20 +70,29 @@
 {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+//
+//        UIImageView *image1 = (UIImageView *)[cell viewWithTag:1];
+//        UILabel *priceProductLabel = (UILabel *)[cell viewWithTag:3];
     
-        UIImageView *image1 = (UIImageView *)[cell viewWithTag:1];
-        UILabel *priceProductLabel = (UILabel *)[cell viewWithTag:3];
-    
-    if (collectionView.tag ==11) {
-        UILabel *categoryNameLabel = (UILabel *)[cell viewWithTag:4];
-        categoryNameLabel.text = [[_categories objectAtIndex:indexPath.row] name];
+    UILabel *categoryNameLabel = (UILabel *)[cell viewWithTag:4];
+    if ([self.searchText length]!=0) {
+        categoryNameLabel.text = [[self.filteredCategories objectAtIndex:indexPath.row] name];
+    }else{
+        categoryNameLabel.text = [[self.categories objectAtIndex:indexPath.row] name];
     }
     
-    if (collectionView.tag ==10) {
-        Product *product = [self.lastProducts objectAtIndex:indexPath.row];
-        image1.image = product.previewImg;
-        priceProductLabel.text =[NSString stringWithFormat:@"%@ ₽",product.price];;
-    }
+    
+    
+//    if (collectionView.tag ==11) {
+//        UILabel *categoryNameLabel = (UILabel *)[cell viewWithTag:4];
+//        categoryNameLabel.text = [[_categories objectAtIndex:indexPath.row] name];
+//    }
+    
+//    if (collectionView.tag ==10) {
+//        Product *product = [self.lastProducts objectAtIndex:indexPath.row];
+//        image1.image = product.previewImg;
+//        priceProductLabel.text =[NSString stringWithFormat:@"%@ ₽",product.price];;
+//    }
     
 
 //    UIImageView *image1 = (UIImageView *)[cell viewWithTag:1];
@@ -101,6 +114,7 @@
 {
     if (collectionView.tag ==11) {
         VMCategory *category = [self.categories objectAtIndex:indexPath.row];
+        self.selectedCategory = category;
         [self segueCategories:category sender:self];
     }
     
@@ -124,19 +138,21 @@
         vc.categories = self.dataTransferArray;
         vc.pagesLastProducts = self.pagesLastProducts;
         vc.lastProducts = self.lastProducts;
+        vc.navigationItem.title =self.selectedCategory.name;
         
     }
     if ([[segue identifier] isEqualToString:@"toProducts"]) {
-        VMPoductViewController *vc = [segue destinationViewController];
+        VMProductViewController *vc = [segue destinationViewController];
         vc.products = [self dataTransferArray];
         vc.category = [self selectedCategory];
         vc.pages =self.pages;
+        vc.navigationItem.title = self.selectedCategory.name;
         vc.updateBlock=^(NSNumber *pageNum,void (^success)(NSDictionary*),void (^failure)(NSString*)){
             [ApplicationData getCatalogItemsWithID:[self selectedCategory].ID withPageNum:pageNum OnSuccess:success onFailure:failure];
         };
     }
     if ([[segue identifier] isEqualToString:@"toLastProducts"]) {
-        VMPoductViewController *vc = [segue destinationViewController];
+        VMProductViewController *vc = [segue destinationViewController];
         vc.products = self.lastProducts;
         vc.category = [self selectedCategory];
         vc.pages =self.pagesLastProducts;
@@ -234,7 +250,17 @@
     [self segueToLastProducts:sender];
 }
 
-
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    self.searchText = [[searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    self.filteredCategories = [[NSMutableArray alloc] init];
+    for (VMCategory *category in self.categories) {
+        NSRange match = [category.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
+        if (match.location != NSNotFound) {
+            [self.filteredCategories addObject:category];
+        }
+    }
+    [self.categoryCollectionView reloadData];
+}
 
 
 /*

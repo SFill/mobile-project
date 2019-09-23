@@ -44,8 +44,7 @@
                            NSLog(@"Geocode failed with error: %@", error);
                            return;
                        }
-                       CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                       NSString *city = [placemark locality];
+                       //CLPlacemark *placemark = [placemarks objectAtIndex:0];
                    }];
 }
 

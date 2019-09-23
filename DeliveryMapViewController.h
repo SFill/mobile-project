@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet MKMapView *deliveryMap;
 @property (nonatomic) IBOutlet WKWebView *webView;
 @property (retain,nonatomic) VMLocationManager *locationManager;
+@property (nonatomic) void (^updateBlock)(NSDictionary* data);
 @end
 
 NS_ASSUME_NONNULL_END

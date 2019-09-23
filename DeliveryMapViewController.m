@@ -8,7 +8,7 @@
 
 #import "DeliveryMapViewController.h"
 
-@interface DeliveryMapViewController ()<MKMapViewDelegate,WKScriptMessageHandler>
+@interface DeliveryMapViewController ()<MKMapViewDelegate,WKScriptMessageHandler,WKNavigationDelegate>
 
 @end
 
@@ -50,7 +50,7 @@
 //}
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     NSDictionary *pickPointResponse = (NSDictionary*) message.body;
-    NSArray *keys = [pickPointResponse allKeys];
+    self.updateBlock(pickPointResponse);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -35,10 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, atomic)  NSMutableArray *dataTransferArray;
 @property (strong, atomic)  NSMutableArray *lastProducts;
 @property (strong, atomic)  NSMutableArray *topProducts;
+@property (strong, atomic)  NSMutableArray *wholeSaleProducts;
 @property (strong, atomic)  NSNumber *pagesTopProducts;
 @property (strong, atomic)  NSNumber *pageTopProducts;
 @property (strong, atomic)  NSNumber *pagesLastProducts;
 @property (strong, atomic)  NSNumber *pageLastProducts;
+@property (strong, atomic)  NSNumber *pagesWholeSaleProducts;
+@property (strong, atomic)  NSNumber *pageWholeSaleProducts;
 @property (weak, nonatomic) IBOutlet UICollectionView *lastProductsCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionView *topProductsCollectionView;
 

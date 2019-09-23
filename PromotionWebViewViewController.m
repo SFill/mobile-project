@@ -8,7 +8,7 @@
 
 #import "PromotionWebViewViewController.h"
 
-@interface PromotionWebViewViewController ()
+@interface PromotionWebViewViewController ()<WKNavigationDelegate>
 
 @end
 
