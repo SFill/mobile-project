@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate> {
+@interface ViewController : UIViewController{
 //    IBOutlet UIImageView *imgView;
 }
 

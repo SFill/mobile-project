@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (strong, nonatomic) IBOutlet UIStepper *stepper;
+@property (nonatomic) IBOutlet NSNumber *goodsPrice;
 - (void) reloadPrices;
 
 

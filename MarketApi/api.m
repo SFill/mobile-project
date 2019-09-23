@@ -30,6 +30,13 @@ FOUNDATION_EXPORT NSString *const API_EXCEPTION_NAME;
         onSuccess: ( void ( ^ )(NSDictionary *data) ) success
         onFailure: ( void ( ^ )(NSString *message) )  failure;
 
+-(void) registerUserWithFirstName:(NSString*) firstName
+                         lastName:(NSString*) lastName
+                            login:(NSString*) login
+                         password:(NSString*) password
+                        onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+                        onFailure: ( void ( ^ )(NSString *message) )  failure;
+
 -(void) getCatalogSections:(NSString*) token
            onSuccess: ( void ( ^ )(NSDictionary *data) ) success
            onFailure: ( void ( ^ )(NSString *message) )  failure;
@@ -50,7 +57,11 @@ FOUNDATION_EXPORT NSString *const API_EXCEPTION_NAME;
             pageNum: (NSNumber*) pageNum
           onSuccess: ( void ( ^ )(NSDictionary *data) ) success
           onFailure: ( void ( ^ )(NSString *message) )  failure;
-
+-(void) getWholeSaleItems:(NSString*) token
+                 inPage: (NSNumber*) inPage
+                pageNum: (NSNumber*) pageNum
+              onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+              onFailure: ( void ( ^ )(NSString *message) )  failure;
 -(void) getLastItems:(NSString*) token
               inPage: (NSNumber*) inPage
              pageNum: (NSNumber*) pageNum
@@ -68,7 +79,23 @@ FOUNDATION_EXPORT NSString *const API_EXCEPTION_NAME;
               pageNum: (NSNumber*) pageNum
             onSuccess: ( void ( ^ )(NSDictionary *data) ) success
             onFailure: ( void ( ^ )(NSString *message) )  failure;
--(void) addToFav:(NSString*) token productId:(NSNumber*) productId onSuccess: ( void ( ^ )(NSDictionary *data) ) success onFailure: ( void ( ^ )(AFHTTPRequestOperation * _Nullable operation) )  failure;
+-(void) addToFav:(NSString*) token
+       productId:(NSNumber*) productId
+       onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+       onFailure: ( void ( ^ )(AFHTTPRequestOperation * _Nullable operation) )  failure;
+-(void) getDeliveryMethodsInPage:(NSNumber*) inPage
+                         pageNum: (NSNumber*) pageNum
+                       onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+                       onFailure: ( void ( ^ )(NSString *message) )  failure;
+ -(void) createOrderWithToken:(NSString*) token
+           orderDict:(NSDictionary*) orderDict
+           onSuccess:( void ( ^ )(NSDictionary *data) ) success
+                    onFailure: ( void ( ^ )(AFHTTPRequestOperation * _Nullable operation) )  failure;
+-(void) getUserOrders:(NSString*) token
+           inPage: (NSNumber*) inPage
+          pageNum: (NSNumber*) pageNum
+        onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+            onFailure: ( void ( ^ )(NSString *message) )  failure;
 @property (strong, nonatomic) NSURL *baseURL;
 @property (strong, nonatomic) AFHTTPRequestOperationManager *manager;
 @end
@@ -123,6 +150,59 @@ NSOperation *searchOperation;
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         failure(operation);
         // exit(0);
+    }];
+}
+ -(void) createOrderWithToken:(NSString*) token orderDict:(NSDictionary*) orderDict onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure: ( void ( ^ )(AFHTTPRequestOperation * _Nullable operation) )  failure{
+    [searchOperation cancel];
+    NSDictionary *dict = @{@"order":orderDict,@"token":token};
+    NSString *catalogItemsPath = [NSString stringWithFormat:@"%@/%@/",HOST_PATH,@"createOrder"];
+    
+    
+    [_manager POST:catalogItemsPath parameters:[self wrapDict:dict] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseData = (NSDictionary*)responseObject;
+        [self checkSuccessResponse:responseData onSuccess:success orFailure:nil];
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        failure(operation);
+        // exit(0);
+    }];
+}
+
+-(void) getUserOrders:(NSString*) token
+             inPage: (NSNumber*) inPage
+            pageNum: (NSNumber*) pageNum
+          onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+          onFailure: ( void ( ^ )(NSString *message) )  failure{
+    NSDictionary *dict = @{@"token":token,@"inPage":inPage,@"pageNum":pageNum};
+    NSString *methodPath = [NSString stringWithFormat:@"%@/%@/",HOST_PATH,@"getUserOrders"];
+    
+    
+    [_manager GET:methodPath parameters:[self wrapDict:dict] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseData = (NSDictionary*)responseObject;
+        [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Error");
+        failure(@"Error");
+    }];
+}
+
+
+-(void) getDeliveryMethodsInPage:(NSNumber*) inPage
+              pageNum: (NSNumber*) pageNum
+            onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+            onFailure: ( void ( ^ )(NSString *message) )  failure{
+    NSDictionary *dict = @{@"inPage":inPage,@"pageNum":pageNum};
+    NSString *methodPath = [NSString stringWithFormat:@"%@/%@/",HOST_PATH,@"getDeliveryMethods"];
+    
+    
+    [_manager GET:methodPath parameters:[self wrapDict:dict] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseData = (NSDictionary*)responseObject;
+        [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Error");
+        failure(@"Error");
+        //exit(0);
     }];
 }
 
@@ -228,6 +308,25 @@ NSOperation *searchOperation;
         failure(@"Error");
     }];
 }
+-(void) getWholeSaleItems:(NSString*) token
+                   inPage: (NSNumber*) inPage
+                  pageNum: (NSNumber*) pageNum
+                onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+                onFailure: ( void ( ^ )(NSString *message) )  failure{
+    NSDictionary *dict = @{@"token":token,@"active":@"Y",@"inPage":inPage,@"pageNum":pageNum};
+    NSString *authPath = [NSString stringWithFormat:@"%@/%@/",HOST_PATH,@"getWholesaleItems"];
+    
+    
+    [_manager GET:authPath parameters:[self wrapDict:dict] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseData = (NSDictionary*)responseObject;
+        [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Error");
+        failure(@"Error");
+    }];
+}
+
 
 -(void) getCatalogSections:(NSString *)token onSuccess:(void (^)(NSDictionary *))success onFailure:(void (^)(NSString *))failure{
     NSDictionary *dict = @{@"token":token,@"active":@"Y"};
@@ -279,8 +378,10 @@ NSOperation *searchOperation;
         [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+       // TODO test
         NSLog(@"Error");
-        failure(@"Error");
+        NSDictionary *data = (NSDictionary*)operation.responseData;
+        failure([data objectForKey:@"MESSAGE"]);
     }];
     
 }
@@ -297,10 +398,32 @@ NSOperation *searchOperation;
         [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        // TODO test
         NSLog(@"Error");
-        failure(@"Error");
+        NSDictionary *data = (NSDictionary*)operation.responseData;
+        failure([data objectForKey:@"MESSAGE"]);
     }];
 }
+-(void) registerUserWithFirstName:(NSString*) firstName
+                         lastName:(NSString*) lastName
+                            login:(NSString*) login
+                         password:(NSString*) password
+                        onSuccess: ( void ( ^ )(NSDictionary *data) ) success
+                        onFailure: ( void ( ^ )(NSString *message) )  failure{
+    NSString *authPath = [NSString stringWithFormat:@"%@/%@/",HOST_PATH,@"registration"];
+    NSDictionary *dict = @{@"login":login,@"password":password,@"name":firstName,@"lastName":lastName};
+    [_manager POST:authPath parameters:[self wrapDict:dict] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *responseData = (NSDictionary*)responseObject;
+        [self checkSuccessResponse:responseData onSuccess:success orFailure:failure];
+        
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        // TODO test
+        NSLog(@"register Error");
+        NSDictionary *data = (NSDictionary*)operation.responseData;
+        failure([data objectForKey:@"MESSAGE"]);
+    }];
+}
+
 
 
 - (NSData *) dictToSendData:(NSDictionary*)dict{

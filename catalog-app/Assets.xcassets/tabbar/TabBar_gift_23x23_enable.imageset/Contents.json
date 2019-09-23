@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "TabBar_gift_enabled_23x23_@2x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "delete-40.png",
       "scale" : "2x"
     },
     {

@@ -17,15 +17,16 @@
 </header>
 <body>
 <script type="text/javascript" src="https://pickpoint.ru/select/postamat.js"></script>
-<section>
-    <form mtehod="post">
-        <button onClick="PickPoint.open(my_function);return false;" style="margin:0 auto">Выбрать адрес</button>
-    </form>
-</section>
+<!--<section>-->
+<!--    <form mtehod="post">-->
+<!--        <button onClick="PickPoint.open(my_function);return false;" style="margin:0 auto">Выбрать адрес</button>-->
+<!--    </form>-->
+<!--</section>-->
 <script type="text/javascript">
     function my_function(result){
          window.webkit.messageHandlers.toController.postMessage(result);
     }
+window.onload = PickPoint.open(my_function);
 </script>
 
 

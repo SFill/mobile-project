@@ -37,49 +37,48 @@
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    return YES;
-}
+//-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+//
+//    return YES;
+//}
 
-#pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    if (tableView == self.searchDisplayController.searchResultsTableView)
-    {
-        return [self.searchResults count];
-    }
-    else
-    {
-        return [self.tableData count];
-    }
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    // Return the number of rows in the section.
+//    if (tableView == self.searchDisplayController.searchResultsTableView)
+//    {
+//        return [self.searchResults count];
+//    }
+//    else
+//    {
+//        return [self.tableData count];
+//    }
+//}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    if (tableView == self.searchDisplayController.searchResultsTableView)
-    {
-        cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        cell.textLabel.text = self.tableData[indexPath.row];
-    }
-    
-    return cell;
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    if (cell == nil)
+//    {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    
+//    if (tableView == self.searchDisplayController.searchResultsTableView)
+//    {
+//        cell.textLabel.text = [self.searchResults objectAtIndex:indexPath.row];
+//    }
+//    else
+//    {
+//        cell.textLabel.text = self.tableData[indexPath.row];
+//    }
+//    
+//    return cell;
+//}
 
 
 @end

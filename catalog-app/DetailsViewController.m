@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "../ReviewsViewController.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface DetailsViewController ()
 
@@ -35,12 +36,15 @@
     self.nameLabel.text = self.product.name;
     self.descriptionTextView.text = self.product.pDescription;
     self.priceLabel.text = [NSString stringWithFormat:@"%@ ₽",self.product.price];
-    self.ImageView.image = self.product.detailImg;
+   // self.ImageView.image = self.product.detailImg;
+    [self.ImageView sd_setImageWithURL:[NSURL URLWithString:self.product.detailImgStringURL]
+              placeholderImage:[UIImage imageNamed:@"iconkulinar.png"]
+     ];
     self.ves.text = self.product.ves;
     self.country.text = self.product.city;
     self.stars.text = self.product.stars;
     NSString *headerString = @"<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>";
-    [self.webViewDescription loadHTMLString:[headerString stringByAppendingString:self.product.pDescription] baseURL:[[NSURL alloc] initWithString:@"https://nevkusno.ru/"]];
+    [self.webViewDescription loadHTMLString:[headerString stringByAppendingString:self.product.pDescription] baseURL:[[NSURL alloc] initWithString:@"https://www.nevkusno.ru/"]];
     NSString *star = @"★";
     NSString *emptyStar = @"☆";
     NSMutableString *rateStarString = [[NSMutableString alloc]init];
@@ -59,32 +63,47 @@
     
     _addToCartPlusOneButton.layer.cornerRadius =10;
     
-     [_addToCart setTitle:[NSString stringWithFormat:@ "В корзину  •  %d ₽", [self.product.price integerValue]]forState:UIControlStateNormal];
+     [_addToCart setTitle:[NSString stringWithFormat:@ "В корзину  •  %@ ₽", self.product.price] forState:UIControlStateNormal];
+
+    if ([self.product.stocks_quantity intValue] !=0) {
+        //_addToCart.enabled = true;
+        _addToCart.backgroundColor = [[UIColor alloc ]initWithRed:0.999 green:0.674 blue:0 alpha:1];
+    }else{
+//_addToCart.enabled = false;
+        _addToCart.backgroundColor = [[UIColor alloc ]initWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                        selector:@selector(cartWasChanged:)
+                                                 name:@"cartWasChanged"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"cartWasChanged"
+     object:self];
     
     
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate =self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    [self.locationManager startUpdatingLocation];
+}
+-(void)cartWasChanged:(NSNotification *) notification{
+    Product* product = [ApplicationData searchCart:self.product];
     
-    
-    
+    if(product ==nil){
+        self.addToCart.hidden = NO;
+        [_leadToCart setTitle:@ "В корзине  1 шт" forState:UIControlStateNormal];
+        
+    }else{
+        self.addToCart.hidden = YES;
+        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %@ шт", [product.amount stringValue]]forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)changeTabToCart:(id)sender {
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:2]; // second tab
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)addToCart:(id)sender
 {
@@ -96,20 +115,17 @@
         return;
     }
     UIButton *button = _addToCart;
-   // 343 55
-//    CGSize stringSize = [self.myButton.titleLabel.text sizeWithFont:self.myButton.titleLabel.font];
-   // CGRect frame = button.frame;
-    
-    
+
     
     Product* product = [ApplicationData searchCart:self.product];
     
     if(product ==nil){
+        self.product.amount =@1;
         [ApplicationData addToCart:self.product];
-        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %d шт", 1]forState:UIControlStateNormal];
+        [_leadToCart setTitle:@"В корзине  1 шт" forState:UIControlStateNormal];
         
     }else{
-        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %d шт", [product.amount integerValue]]forState:UIControlStateNormal];
+        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %@ шт", [product.amount stringValue]]forState:UIControlStateNormal];
     }
     button.hidden = true;
     
@@ -138,16 +154,17 @@
     Product* product = [ApplicationData searchCart:self.product];
     [ApplicationData addToCart:self.product];
     if(product ==nil){
-        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %d шт", 1]forState:UIControlStateNormal];
+        self.product.amount = @1;
+        [self.leadToCart setTitle:@ "В корзине 1 шт" forState:UIControlStateNormal];
         
     }else{
-        [_leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %d шт", [product.amount integerValue]]forState:UIControlStateNormal];
+        [self.leadToCart setTitle:[NSString stringWithFormat:@ "В корзине  %@ шт", [product.amount stringValue]] forState:UIControlStateNormal];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Make sure your segue name in storyboard is the same as this line
+
     if ([[segue identifier] isEqualToString:@"Reviews"])
     {
         ReviewsViewController *vc = [segue destinationViewController];

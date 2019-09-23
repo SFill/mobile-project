@@ -22,21 +22,23 @@
 +(NSMutableArray*) getCart;
 +(NSMutableArray*) getDeliveryMethods;
 +(Product*) searchCart: (Product*) value;
-+(void) login:(NSString*) login withPassword: (NSString*) password  onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString *message) ) failure;
-+(void) registr:(NSString*) login withPassword: (NSString*) password  onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString *message) ) failure;
++(void) login:(NSString*) login withPassword: (NSString*) password asNewUser:(BOOL) newUser onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString* message) ) failure;
+//+(void) registr:(NSString*) login withPassword: (NSString*) password  onSuccess:( void ( ^ )(NSDictionary *data) ) success onFailure:( void ( ^ )(NSString *message) ) failure;
 +(void) getInitialCatalogSectionsOnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
 +(void) getSubCatalogsWithID:(NSNumber*) parentID OnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
 +(void) getCatalogItemsWithID:(NSNumber*) categoryID withPageNum:(NSNumber*) pageNum OnSuccess:(void(^)(NSDictionary* data)) success onFailure:(void(^)(NSString* message)) failure;
-+(void) getCatalogItemsWithID:(NSNumber*) categoryID withPageNum:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
 +(void) getTopItems:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
 +(void) getLastItemsForCurrentMonthWithID:(NSNumber*) categoryID
                               withPageNum:(NSNumber*) pageNum
                                    inPage: (NSNumber*) inPage
                                 OnSuccess:(void(^)(NSDictionary* data)) success
                                 onFailure:(void(^)(NSString* message)) failure;
-+(void) getFavorItems:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
+//+(void) getFavorItemsWithPageNum:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
 +(void) searchCatalog:(NSString*) query pageNum:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
 +(void) addToFav:(NSNumber*) productId OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
++(void) getDeliveryMethodsWithPageNum:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
++(void) createOrderWithDict:(NSDictionary*) orderDict onSuccess: (void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
++(NSMutableArray*) getDeliveryMethodsFromDict:(NSDictionary *) data;
 + (void) setQueueForManager:(dispatch_queue_t) queue;
 + (void) defaultQueueForManager;
 +(NSMutableArray*) getProductsFromDict:(NSDictionary*) data;
@@ -46,5 +48,17 @@
 +(NSMutableArray*) getCities;
 +(NSMutableArray*) getCitySections;
 +(NSMutableArray*) getCityNameFirstLetters;
-
++(NSMutableArray*) getOrders;
++(void) cleanCart;
++(Product*) searchInFavorites:(Product*)product;
++(void) getWholeSaleItemsWithPageNum:(NSNumber*) pageNum inPage: (NSNumber*) inPage OnSuccess:(void(^)(NSDictionary* data))  success onFailure:(void(^)(NSString* message)) failure;
++(void) registerUserWithFirstName:(NSString*) firstName
+                         lastName:(NSString*) lastName
+                            login:(NSString*) login
+                         password:(NSString*) password
+                        onSuccess:( void ( ^ )(NSDictionary *data) ) success
+                        onFailure:( void ( ^ )(NSString* message) ) failure;
++(void) loadUserDataOnSuccess:( void ( ^ )(NSDictionary *data) ) success
+                    onFailure:( void ( ^ )(NSString* message) ) failure;
++(void) logout;
 @end

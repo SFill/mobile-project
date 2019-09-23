@@ -9,11 +9,10 @@
 #import "ViewController.h"
 #import "ApplicationData.h"
 #import "DetailsViewController.h"
-#import "twoViewController.h"
 #import "../TableViewCell.h"
 #import "../UIViewController+UIViewContollerWithSpinnerCategory.h"
 
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
+@interface ViewController (){
     NSMutableArray *myObject;
 
     BOOL isFiltered;

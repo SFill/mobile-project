@@ -51,7 +51,6 @@ static PickPointApi *api = nil;
         //[self checkSuccessResponse:responseData onSuccess:success orFailure:nil];
         
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        long code = [operation response].statusCode;
         failure(operation);
     }];
 }

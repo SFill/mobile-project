@@ -10,4 +10,9 @@
 
 @implementation Product
 
+-(NSDictionary*) getDataForOrderCreateObject{
+    NSDictionary *data = @{@"id":[self.itemId stringValue],@"amount":self.amount,@"Currency":@"RUB"};
+    return data;
+}
+
 @end

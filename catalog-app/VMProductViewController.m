@@ -6,38 +6,39 @@
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
-#import "VMPoductViewController.h"
+#import "VMProductViewController.h"
 #import "ApplicationData.h"
 #import "DetailsViewController.h"
 #import "FirstViewController.h"
 #import "../UIViewController+UIViewContollerWithSpinnerCategory.h"
 #import "../ReusableCollectionViewCells/FooterCollectionReusableView.h"
+#import <SDWebImage/SDWebImage.h>
 
-@interface VMPoductViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-
+@interface VMProductViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@property (atomic) BOOL waiting;
 
 @end
 
-@implementation VMPoductViewController
+@implementation VMProductViewController
 
 @synthesize Collection_view;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 //TODO push-and-load
-   //self.refreshControl = [[UIRefreshControl alloc]init];
-    //[self.refreshControl addTarget:self action:@selector(loadMoreData) forControlEvents:UIControlEventValueChanged];
-    
-//    if (@available(iOS 10.0, *)) {
-//        self.Collection_view.refreshControl = self.refreshControl;
-//    } else {
-//        [self.Collection_view addSubview:self.refreshControl];
-//    }
-    
-//    [self.Collection_view registerClass:[FooterCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     self.pageNum =@1;
-    waiting = NO;
-    // Do any additional setup after loading the view.
+    self.waiting = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productStateWasChanged:)
+                                                 name:@"favWasChanged"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productStateWasChanged:)
+                                                 name:@"cartWasChanged"
+                                               object:nil];
+}
+-(void)productStateWasChanged:(NSNotification *) notification{
+    [self.Collection_view reloadData];
 }
 
 
@@ -45,25 +46,6 @@
     [super didReceiveMemoryWarning];
 }
 
-
-//
-//- (NSArray *) layoutAttributesForElementsInRect:(CGRect)rect {
-//    NSArray *answer = [ApplicationData getCatalog];
-//
-//    for(int i = 1; i < [answer count]; ++i) {
-//        UICollectionViewLayoutAttributes *currentLayoutAttributes = answer[i];
-//        UICollectionViewLayoutAttributes *prevLayoutAttributes = answer[i - 1];
-//        NSInteger maximumSpacing = 4;
-//        NSInteger origin = CGRectGetMaxX(prevLayoutAttributes.frame);
-//
-//        if(origin + maximumSpacing + currentLayoutAttributes.frame.size.width < Collection_view.collectionViewContentSize.width) {
-//            CGRect frame = currentLayoutAttributes.frame;
-//            frame.origin.x = origin + maximumSpacing;
-//            currentLayoutAttributes.frame = frame;
-//        }
-//    }
-//    return answer;
-//}
 
 -(UICollectionReusableView*) collectionView:(UICollectionView*) collectionView viewForSupplementaryElementOfKind:(nonnull NSString *)kind atIndexPath:(nonnull NSIndexPath *)indexPath{
     FooterCollectionReusableView *theView;
@@ -75,7 +57,7 @@
     } else {
         theView = [self.Collection_view dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterReusabelView" forIndexPath:indexPath];
         [theView.dataLoadingAi startAnimating];
-        if (!waiting & ([self.pages integerValue ]==[self.pageNum integerValue]) ) {
+        if (!self.waiting & ([self.pages integerValue ]==[self.pageNum integerValue]) ) {
             [theView setFrame:CGRectMake(0, 0, theView.frame.size.width, 0)];
         }
        // [theView.refreshButton setTitle:@"qweqweqwe" forState:UIControlStateNormal];
@@ -84,11 +66,6 @@
     return theView;
 
 }
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-//    double cellWidth = (self.view.frame.size.width -20);
-//    return CGSizeMake(cellWidth, cellWidth);
-//}
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -133,21 +110,28 @@
     // индекс массива товара для корзины
 //    cartButton.tag = indexPath.row + 10;
 //    favButton.tag = indexPath.row + 10;
-    if (product.inFav) {
+    
+    if ([ApplicationData searchInFavorites:product]) {
         [favButton setTitle:@"💖" forState:UIControlStateNormal];
         
     }else{
         [favButton setTitle:@"❤️" forState:UIControlStateNormal];
     }
-    if (product.inCart) {
+    
+    if ([ApplicationData searchCart:product]) {
         [cartButton setImage:[UIImage imageNamed:@"cartonlyoneselect.png"] forState:UIControlStateNormal];
+       
+    }else if ([product.stocks_quantity intValue] !=0) {
+         [cartButton setImage:[UIImage imageNamed:@"TabBar_gift_23x23_enable.png"] forState:UIControlStateNormal];
         
     }else{
        [cartButton setImage:[UIImage imageNamed:@"TabBar_gift_23x23_.png"] forState:UIControlStateNormal];
-    }
-    
+        }
    // image1.image = [UIImage imageNamed:_product.imageName];
-    image1.image = product.previewImg;
+    //image1.image = product.previewImg;
+    [image1 sd_setImageWithURL:[NSURL URLWithString:product.previewImgStringURL]
+              placeholderImage:[UIImage imageNamed:@"iconkulinar.png"]
+     ];
     label1.text = [NSString stringWithFormat:@"%@ ₽",product.price];
     label2.text = product.name;
     //label3.text = _product.city;
@@ -174,16 +158,13 @@
        willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath{
     @synchronized (self) {
-        if (
-            indexPath.row >= 45 &&
+        if (indexPath.row >= 45 &&
             indexPath.row >= [self.products count]-1 &&
-            !waiting
-            )  {
-            waiting = YES;
+            !self.waiting
+            )
+        {
+            self.waiting = YES;
             [self loadMoreData];
-
-
-
         }
     }
 
@@ -201,12 +182,15 @@
             self.updateBlock(
                              self.pageNum,
                              ^(NSDictionary *data) {
-                                 self.products = [self.products arrayByAddingObjectsFromArray:[ApplicationData getProductsFromDict:data]];
-                                 waiting = NO;
+                                 for (Product *product in [ApplicationData getProductsFromDict:data]) {
+                                     [self.products addObject:product];
+                                 }
+                                 
+                                 self.waiting = NO;
                                  dispatch_group_leave(group);
                              },
                              ^(NSString *message) {
-                                 waiting = NO;
+                                 self.waiting = NO;
                                  dispatch_group_leave(group);
                              }
                              );
@@ -219,7 +203,7 @@
         });
         
     }else{
-        waiting = NO;
+        self.waiting = NO;
     }
 }
 
@@ -255,7 +239,7 @@
     long index =[i row];
     Product *product =[self.products objectAtIndex:index];
     if ([product.stocks_quantity integerValue]<1) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"К сожалению товар закончился" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"К сожалению товара нет в наличии" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
@@ -265,11 +249,11 @@
     [ApplicationData addToCart:product];
     [sender setImage:[UIImage imageNamed:@"cartonlyoneselect.png"] forState:UIControlStateNormal];
     product.inCart = YES;
-    sender = nil;
+    [self.Collection_view reloadData];
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    self.searchText = searchText;
+    self.searchText = [[searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] lowercaseString];
     self.filteredProducts = [[NSMutableArray alloc] init];
     for (Product *product in self.products) {
         NSRange match = [product.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
@@ -289,12 +273,14 @@
     Product *product =[self.products objectAtIndex:index];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
+    NSString __block *responseMessage = @"";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0), ^{
         [ApplicationData addToFav:product.itemId OnSuccess:^(NSDictionary *data) {
             isAdded = YES;
             dispatch_group_leave(group);
         } onFailure:^(NSString *message) {
             NSLog(@"error to add in fav");
+            responseMessage = message;
             dispatch_group_leave(group);
         }];
     });
@@ -302,6 +288,12 @@
         if (isAdded) {
             product.inFav = YES;
             [button setTitle:@"💖" forState:UIControlStateNormal];
+        }else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:responseMessage preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            [alert addAction:defaultAction];
+            UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+            [controller presentViewController:alert animated:YES completion:nil];
         }
     });
     sender = nil;

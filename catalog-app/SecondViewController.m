@@ -50,8 +50,6 @@
 - (void) reloadPrices{
     NSMutableArray *cart = [ApplicationData getCart];
     sum=0;
-    NSRange match;
-    
     for(int i=0;i<[cart count];i++){
         NSString *price =[[cart objectAtIndex: i] price];
         NSNumber *amount = [[ cart objectAtIndex:i] amount];
@@ -61,6 +59,7 @@
     }
     self.label1.text = [[NSMutableString alloc] initWithFormat:@"%d ₽", sum];
     self.label.text = [[NSMutableString alloc] initWithFormat:@"%d ₽", sum];
+    self.goodsPrice = @(sum);
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -80,15 +79,20 @@
             Product *p = [[ApplicationData getCart] objectAtIndex:indexPath.row];
             [cell setProduct:p];
             [cell deleteRow:^(int result){
-                NSMutableArray *cart = [ApplicationData getCart];
                 Product* p = [[ApplicationData getCart] objectAtIndex:indexPath.row];
                 p.amount = [NSNumber numberWithInt:1];
                 [[ApplicationData getCart] removeObjectAtIndex:indexPath.row];
                 [self.tableView reloadData];
                 [self reloadPrices];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"cartWasChanged"
+                 object:self];
             }];
             [cell updateRow:^(int result){
                 [self reloadPrices];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"cartWasChanged"
+                 object:self];
             }];
     }
     return cell;
@@ -102,8 +106,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     CheckoutViewController *vc = segue.destinationViewController;
-    vc.adb_rg = self.label1.text;
-    
+    vc.goodsPrice = self.goodsPrice;
     
 }
 

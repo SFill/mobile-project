@@ -9,7 +9,7 @@
 #import "FirstViewController.h"
 #import "ApplicationData.h"
 #import "Product.h"
-#import "VMPoductViewController.h"
+#import "VMProductViewController.h"
 
 
 
@@ -87,7 +87,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    VMPoductViewController *vc = segue.destinationViewController;
+    VMProductViewController *vc = segue.destinationViewController;
     
     vc.product = [[ApplicationData getCatalog] objectAtIndex:self.tableView.
         indexPathForSelectedRow.row];

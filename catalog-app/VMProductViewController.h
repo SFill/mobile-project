@@ -11,9 +11,7 @@
 #import "VMCategory.h"
 
 
-@interface VMPoductViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>{
-    BOOL waiting;
-}
+@interface VMProductViewController : UIViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 typedef void (^ SuccessBlock)(NSDictionary*);
 typedef void (^ FailedBlock)(NSString*);
 @property (strong, nonatomic) IBOutlet UICollectionView *Collection_view;

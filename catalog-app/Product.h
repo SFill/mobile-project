@@ -30,7 +30,11 @@
 @property (nonatomic) BOOL inFav;
 @property (nonatomic) UIImage *previewImg;
 @property (nonatomic) UIImage *detailImg;
+@property (nonatomic) NSString *previewImgStringURL;
+@property (nonatomic) NSString *detailImgStringURL;
+
 @property (nonatomic) NSMutableArray *reviews;
+-(NSDictionary*) getDataForOrderCreateObject;
 
 
 @end
